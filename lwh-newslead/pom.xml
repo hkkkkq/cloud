@@ -7,7 +7,6 @@
 <!--        <groupId>com.lwhtarena</groupId>-->
 <!--        <version>1.0.0</version>-->
 <!--    </parent>-->
-
     <artifactId>lwh-newslead</artifactId>
     <groupId>com.lwhtarena</groupId>
     <version>1.0.0</version>
@@ -83,6 +82,12 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
+        <!-- junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -99,7 +104,16 @@
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring.boot.version}</version>
                 <type>pom</type>
+                <scope>import</scope>
             </dependency>
+            <!-- spring boot admin -->
+<!--            <dependency>-->
+<!--                <groupId>de.codecentric</groupId>-->
+<!--                <artifactId>spring-boot-admin-dependencies</artifactId>-->
+<!--                <version>${spring.boot.admin.version}</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
 
             <!--========== 内部依赖工程 ==========-->
             <dependency>
@@ -237,14 +251,6 @@
                 <version>${fastjson.dataformat.version}</version>
             </dependency>
 
-            <!-- spring boot admin -->
-            <dependency>
-                <groupId>de.codecentric</groupId>
-                <artifactId>spring-boot-admin-dependencies</artifactId>
-                <version>${spring.boot.admin.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
             <!-- curator ZK 客户端 -->
             <dependency>
                 <groupId>org.apache.curator</groupId>
@@ -291,12 +297,6 @@
                 <groupId>com.aliyun</groupId>
                 <artifactId>aliyun-java-sdk-green</artifactId>
                 <version>${ali.green.version}</version>
-            </dependency>
-            <!-- junit -->
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
             </dependency>
             <!-- ElasticSearch连接-->
             <dependency>
