@@ -21,7 +21,7 @@ import java.io.IOException;
  * @author liwh
  * @Title: MysqlCoreConfig
  * @Package com.lwhtarena.nl.common.mysql.core
- * @Description:
+ * @Description: 封装mysql配置方便于扫描
  * @Version 1.0.0
  * @date 2020/5/15 11:46
  */

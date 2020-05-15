@@ -11,5 +11,12 @@
 
     <artifactId>newslead-apis</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.lwhtarena</groupId>
+            <artifactId>newslead-model</artifactId>
+        </dependency>
+    </dependencies>
+
 
 </project>
