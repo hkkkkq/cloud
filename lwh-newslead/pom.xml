@@ -143,6 +143,7 @@
                 <artifactId>spring-security-jwt</artifactId>
                 <version>${spring.jwt.version}</version>
             </dependency>
+            <!--反射工具包-->
             <dependency>
                 <groupId>org.reflections</groupId>
                 <artifactId>reflections</artifactId>
