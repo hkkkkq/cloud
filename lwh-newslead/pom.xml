@@ -64,6 +64,7 @@
         <kafka.version>2.2.7.RELEASE</kafka.version>
         <kafka.client.version>2.0.1</kafka.client.version>
         <reflections.version>0.9.11</reflections.version>
+        <commons-beanutils.version>1.9.4</commons-beanutils.version>
     </properties>
 
     <dependencies>
@@ -327,6 +328,12 @@
                 <groupId>org.apache.kafka</groupId>
                 <artifactId>kafka-clients</artifactId>
                 <version>${kafka.client.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${commons-beanutils.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

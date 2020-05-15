@@ -10,6 +10,45 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>newslead-utils</artifactId>
+    <description>
+        utils 是工程共用类项目，包括加密、解密、Date、JSON等工具类
+    </description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.lwhtarena</groupId>
+            <artifactId>newslead-model</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+        </dependency>
+        <!--匹配度工具包-->
+        <dependency>
+            <groupId>com.hankcs</groupId>
+            <artifactId>hanlp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+        </dependency>
+    </dependencies>
 
 
 </project>
