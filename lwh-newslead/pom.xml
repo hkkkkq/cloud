@@ -41,19 +41,17 @@
         <!-- 依赖包版本管理 -->
         <spring.boot.version>2.2.5.RELEASE</spring.boot.version>
         <spring.cloud.version>Hoxton.SR4</spring.cloud.version>
-        <commons.io.version>2.6</commons.io.version>
-        <commons.codec.version>1.12</commons.codec.version>
         <lombok.version>1.18.12</lombok.version>
-        <mysql.version>5.1.47</mysql.version>
-        <mybatis.version>3.5.1</mybatis.version>
-        <mybatis.spring.version>2.0.1</mybatis.spring.version>
+        <mysql.version>8.0.20</mysql.version>
+        <mybatis.version>3.5.4</mybatis.version>
+        <mybatis.spring.version>2.0.4</mybatis.spring.version>
         <lang3.version>3.5</lang3.version>
         <pagehelper.version>1.2.3</pagehelper.version>
         <jsoup.version>1.10.2</jsoup.version>
         <jwt.version>0.9.1</jwt.version>
-        <fastjson.version>1.2.58</fastjson.version>
-        <fastjson.dataformat.version>2.9.9</fastjson.dataformat.version>
-        <spring.jwt.version>1.0.9.RELEASE</spring.jwt.version>
+        <fastjson.version>1.2.68</fastjson.version>
+        <fastjson.dataformat.version>2.11.0</fastjson.dataformat.version>
+        <spring.jwt.version>1.1.0.RELEASE</spring.jwt.version>
         <spring.boot.admin.version>2.1.6</spring.boot.admin.version>
         <curator.version>4.2.0</curator.version>
         <hanlp.version>portable-1.7.7</hanlp.version>
@@ -61,13 +59,15 @@
         <baidu.version>4.11.1</baidu.version>
         <junit.version>4.12</junit.version>
         <searchbox.version>6.3.1</searchbox.version>
-        <elasticsearch.version>7.2.0</elasticsearch.version>
+        <elasticsearch.version>7.7.0</elasticsearch.version>
         <ali.core.version>4.1.1</ali.core.version>
         <ali.green.version>3.4.1</ali.green.version>
-        <kafka.version>2.2.7.RELEASE</kafka.version>
-        <kafka.client.version>2.0.1</kafka.client.version>
-        <reflections.version>0.9.11</reflections.version>
+        <kafka.version>2.5.0.RELEASE</kafka.version>
+        <kafka.client.version>2.5.0.RELEASE</kafka.client.version>
+        <reflections.version>0.9.12</reflections.version>
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
+        <commons.io.version>2.6</commons.io.version>
+        <commons.codec.version>1.14</commons.codec.version>
     </properties>
 
     <dependencies>
