@@ -38,7 +38,6 @@ import java.util.stream.Collectors;
 
 @Log4j2
 @Service
-@SuppressWarnings("all")
 public class AppArticleServiceImpl implements AppArticleService {
     private static final short MAX_PAGE_SIZE = 50;
 
