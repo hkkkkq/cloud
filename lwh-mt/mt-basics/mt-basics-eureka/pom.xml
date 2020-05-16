@@ -10,6 +10,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mt-basics-eureka</artifactId>
+    <description>
+        微服务注册中心
+    </description>
 
     <dependencies>
         <dependency>
