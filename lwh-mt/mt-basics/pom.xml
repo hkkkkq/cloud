@@ -11,6 +11,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>mt-basics-eureka</module>
+        <module>mt-basics-gateway</module>
     </modules>
     <artifactId>mt-basics</artifactId>
 
