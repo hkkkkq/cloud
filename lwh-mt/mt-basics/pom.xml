@@ -2,19 +2,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>lwh-mt</artifactId>
+        <groupId>com.lwhtarena</groupId>
+        <version>1.0.0</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.lwhtarena</groupId>
-    <artifactId>cloud</artifactId>
-    <version>1.0.0</version>
-    <modules>
-        <module>lwh-newslead</module>
-        <module>lwh-mi</module>
-        <module>lwh-mt</module>
-    </modules>
     <packaging>pom</packaging>
+    <modules>
+        <module>mt-basics-eureka</module>
+    </modules>
+    <artifactId>mt-basics</artifactId>
+
     <description>
-        企业微服务集
+        分布式基础设施
     </description>
+
 
 </project>
