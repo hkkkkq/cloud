@@ -34,6 +34,8 @@
         <!-- 依赖包版本管理 -->
         <spring.boot.version>2.2.5.RELEASE</spring.boot.version>
         <spring.cloud.version>Hoxton.SR4</spring.cloud.version>
+        <swagger2.version>2.9.2</swagger2.version>
+        <knife4j.version>2.0.2</knife4j.version>
         <lombok.version>1.18.12</lombok.version>
         <junit.version>4.12</junit.version>
         <lang3.version>3.5</lang3.version>
@@ -71,6 +73,12 @@
                 <version>${spring.boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.github.xiaoymin/knife4j-spring-boot-starter -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>

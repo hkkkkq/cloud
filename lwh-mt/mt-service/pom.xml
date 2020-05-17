@@ -14,6 +14,7 @@
 
     <modules>
         <module>mt-service-weixin</module>
+        <module>mt-service-member</module>
     </modules>
 
 </project>
