@@ -11,6 +11,7 @@
         <module>lwh-newslead</module>
         <module>lwh-mi</module>
         <module>lwh-mt</module>
+        <module>lwh-mk</module>
     </modules>
     <packaging>pom</packaging>
     <description>
