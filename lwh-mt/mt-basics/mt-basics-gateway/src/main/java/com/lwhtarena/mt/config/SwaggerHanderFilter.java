@@ -12,6 +12,11 @@ import org.springframework.web.server.ServerWebExchange;
  * @Title: SwaggerHanderFilter
  * @Package com.lwhtarena.mt.config
  * @Description:
+ *      在集成Spring Cloud Gateway网关的时候,会出现没有basePath的情况(即定义的例如/user、/order等微服务的前缀),
+ *   这个情况在使用zuul网关的时候不会出现此问题,因此,在Gateway网关需要添加一个Filter实体Bean
+ *      然后在配置文件application.yml指定这个filter
+ *
+ *
  * @Version 1.0.0
  * @date 2020/5/17 19:39
  */
@@ -19,7 +24,7 @@ import org.springframework.web.server.ServerWebExchange;
 public class SwaggerHanderFilter extends AbstractGatewayFilterFactory {
 
     private static final String HEAADER_NAME ="X-Forwarded-Prefix";
-    private static final String URI = "/v1/api-docs";
+    private static final String URI = "/v2/api-docs";
 
     @Override
     public GatewayFilter apply(Object config) {

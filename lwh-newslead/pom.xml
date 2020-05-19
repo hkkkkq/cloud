@@ -27,6 +27,7 @@
         <module>newslead-article</module>
         <!--微服务暴露接口定义项目-->
         <module>newslead-apis</module>
+        <module>newslead-behavior</module>
     </modules>
 
     <properties>
@@ -40,6 +41,7 @@
         <!-- 依赖包版本管理 -->
         <spring.boot.version>2.2.5.RELEASE</spring.boot.version>
         <spring.cloud.version>Hoxton.SR4</spring.cloud.version>
+        <knife4j.version>2.0.2</knife4j.version>
         <lombok.version>1.18.12</lombok.version>
         <mysql.version>8.0.20</mysql.version>
         <mybatis.version>3.5.4</mybatis.version>
@@ -103,6 +105,15 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--整合swagger-->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-dependencies</artifactId>
+                <version>${knife4j.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

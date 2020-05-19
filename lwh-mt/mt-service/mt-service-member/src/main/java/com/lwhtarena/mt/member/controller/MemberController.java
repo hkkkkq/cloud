@@ -1,6 +1,6 @@
 package com.lwhtarena.mt.member.controller;
 
-import com.lwhtarena.mt.enyity.AppEntity;
+import com.lwhtarena.mt.entity.AppEntity;
 import com.lwhtarena.mt.service.MemberService;
 import org.springframework.web.bind.annotation.RestController;
 

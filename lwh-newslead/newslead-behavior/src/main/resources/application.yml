@@ -1,0 +1,5 @@
+server:
+  port: ${port.behavior}
+spring:
+  application:
+    name: ${sn.behavior}
