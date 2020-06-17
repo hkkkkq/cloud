@@ -13,6 +13,7 @@
         <module>lwh-mt</module>
         <module>lwh-mk</module>
         <module>lwh-micromall</module>
+        <module>lwh-hk</module>
     </modules>
     <packaging>pom</packaging>
     <description>
