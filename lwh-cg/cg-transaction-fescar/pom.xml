@@ -3,20 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>lwh-mk</artifactId>
+        <artifactId>lwh-cg</artifactId>
         <groupId>com.lwhtarena</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mk-modules</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>mk-daemon-service</module>
-        <module>mk-mc-service</module>
-        <module>mk-upms-service</module>
-        <module>mk-sso-client</module>
-    </modules>
+    <artifactId>cg-transaction-fescar</artifactId>
+    <description>
+        分布式事务模块，将分布式事务抽取到该工程中，任何工程如需要使用分布式事务，只需依赖该工程即可。
+    </description>
 
 
 </project>

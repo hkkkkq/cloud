@@ -3,20 +3,22 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>lwh-mk</artifactId>
+        <artifactId>cg-service</artifactId>
         <groupId>com.lwhtarena</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mk-modules</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>mk-daemon-service</module>
-        <module>mk-mc-service</module>
-        <module>mk-upms-service</module>
-        <module>mk-sso-client</module>
-    </modules>
+    <artifactId>cg-service-goods</artifactId>
+
+    <packaging>jar</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>com.lwhtarena</groupId>
+            <artifactId>cg-service-goods-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
 
 </project>

@@ -3,23 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    <artifactId>lwh-ms</artifactId>
     <groupId>com.lwhtarena</groupId>
-    <artifactId>cloud</artifactId>
     <version>1.0.0</version>
-    <modules>
-        <module>lwh-newslead</module>
-        <module>lwh-mi</module>
-        <module>lwh-mt</module>
-        <module>lwh-mk</module>
-        <module>lwh-micromall</module>
-        <module>lwh-hk</module>
-        <module>lwh-ms</module>
-        <module>lwh-cg</module>
-    </modules>
     <packaging>pom</packaging>
+
     <description>
-        企业微服务集
+        秒杀系统--企业级实战应用
     </description>
+
+
+
 
 </project>

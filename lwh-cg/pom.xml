@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<!--    <parent>-->
+<!--        <artifactId>cloud</artifactId>-->
+<!--        <groupId>com.lwhtarena</groupId>-->
+<!--        <version>1.0.0</version>-->
+<!--    </parent>-->
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.lwhtarena</groupId>
+    <artifactId>lwh-cg</artifactId>
+    <version>1.0.0</version>
+    <modules>
+        <module>cg-common</module>
+        <module>cg-common-db</module>
+        <module>cg-eureka</module>
+        <module>cg-gateway</module>
+        <module>cg-service</module>
+        <module>cg-service-api</module>
+        <module>cg-web</module>
+        <module>cg-user-oauth</module>
+        <module>cg-transaction-fescar</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <description>
+        电子商城--畅购商城实战
+    </description>
+
+    <properties>
+        <!-- 项目源码及编译输出的编码 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- 项目编译JDK版本 -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <!--打包的时候跳过测试-->
+        <skipTests>true</skipTests>
+
+        <spring.boot.version>2.2.5.RELEASE</spring.boot.version>
+        <spring.cloud.version>Hoxton.SR4</spring.cloud.version>
+        <knife4j.version>2.0.2</knife4j.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.68</version>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--整合swagger-->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-dependencies</artifactId>
+                <version>${knife4j.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>

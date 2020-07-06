@@ -3,20 +3,18 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>lwh-mk</artifactId>
+        <artifactId>lwh-cg</artifactId>
         <groupId>com.lwhtarena</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <description>
+        网关的相关模块的父工程；
+        网关模块，根据网站的规模和需要，可以将综合逻辑相关的服务用网关路由组合到一起。在这里还可以做鉴权和限流相关操作。
+    </description>
 
-    <artifactId>mk-modules</artifactId>
+    <artifactId>cg-gateway</artifactId>
     <packaging>pom</packaging>
-    <modules>
-        <module>mk-daemon-service</module>
-        <module>mk-mc-service</module>
-        <module>mk-upms-service</module>
-        <module>mk-sso-client</module>
-    </modules>
 
 
 </project>

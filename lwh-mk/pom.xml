@@ -20,6 +20,7 @@
         <module>mk-config</module>
         <module>mk-gateway</module>
         <module>mk-visual</module>
+        <module>mk-modules</module>
     </modules>
     <properties>
         <!-- 项目源码及编译输出的编码 -->
