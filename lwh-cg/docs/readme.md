@@ -77,3 +77,21 @@ B2B2C是一种电子商务类型的网络购物商业模式，B是BUSINESS的简
 ## 系统架构图
 
 ![](./img/002.jpeg)
+
+## 安装Fastdfs镜像
+```shell script
+##运行tracker
+$ docker run -d --name tracker --net=host morunchang/fastdfs sh tracker.sh
+
+##运行storage
+$ docker run -d --name storage --net=host -e TRACKER_IP=192.168.0.113:22122 -e GROUP_NAME=group1 morunchang/fastdfs sh storage.sh
+```
+- 使用的网络模式是–net=host, 192.168.0.113是宿主机的IP
+- group1是组名，即storage的组
+- 如果想要增加新的storage服务器，再次运行该命令，注意更换 新组名
+
+开启启动设置
+```shell script
+docker update --restart=always tracker
+docker update --restart=always storage
+```

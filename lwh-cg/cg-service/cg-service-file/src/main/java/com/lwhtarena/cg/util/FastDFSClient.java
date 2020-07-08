@@ -1,6 +1,8 @@
 package com.lwhtarena.cg.util;
 
 import com.lwhtarena.cg.file.FastDFSFile;
+import org.csource.common.NameValuePair;
+import org.csource.fastdfs.*;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.ByteArrayInputStream;
@@ -16,6 +18,10 @@ import java.io.InputStream;
  * @date 2020/7/2 17:16
  */
 public class FastDFSClient {
+
+    /**
+     * 加载tracker信息，相当于jdbc和数据库建立连接
+     */
     static {
         //从classpath下获取文件对象获取路径
         String path = new ClassPathResource("fdfs_client.conf").getPath();
@@ -139,7 +145,6 @@ public class FastDFSClient {
         }
         return null;
     }
-
 
     //根据文件名和组名 获取组信息的数组信息
     public static ServerInfo[] getServerInfo(String groupName, String remoteFileName){
