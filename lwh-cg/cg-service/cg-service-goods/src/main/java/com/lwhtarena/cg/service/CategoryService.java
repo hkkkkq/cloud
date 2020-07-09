@@ -64,4 +64,13 @@ public interface CategoryService {
      * @return
      */
     List<Category> findAll();
+
+    /**
+     * 根据父节点id查找
+     * @param id
+     * @return
+     */
+    List<Category> findByParentId(Integer id);
+
+
 }

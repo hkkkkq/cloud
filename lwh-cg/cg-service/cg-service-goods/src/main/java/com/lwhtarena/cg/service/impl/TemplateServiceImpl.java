@@ -1,6 +1,8 @@
 package com.lwhtarena.cg.service.impl;
 
+import com.lwhtarena.cg.dao.CategoryMapper;
 import com.lwhtarena.cg.dao.TemplateMapper;
+import com.lwhtarena.cg.goods.pojo.Category;
 import com.lwhtarena.cg.goods.pojo.Template;
 import com.lwhtarena.cg.service.TemplateService;
 import com.github.pagehelper.PageHelper;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /****
@@ -20,8 +23,11 @@ import java.util.List;
 @Service
 public class TemplateServiceImpl implements TemplateService {
 
-    @Autowired
+    @Resource
     private TemplateMapper templateMapper;
+
+    @Resource
+    private CategoryMapper categoryMapper;
 
 
     /**
@@ -151,5 +157,19 @@ public class TemplateServiceImpl implements TemplateService {
     @Override
     public List<Template> findAll() {
         return templateMapper.selectAll();
+    }
+
+    /***
+     * 根据分类ID查询模板信息
+     * @param id
+     * @return
+     */
+    @Override
+    public Template findByCategoryId(Integer id) {
+        //查询分类信息
+        Category category = categoryMapper.selectByPrimaryKey(id);
+
+        //根据模板Id查询模板信息
+        return templateMapper.selectByPrimaryKey(category.getTemplateId());
     }
 }

@@ -8,4 +8,5 @@ import tk.mybatis.mapper.common.Mapper;
  * @Date 2020/07/09 0:18
  *****/
 public interface CategoryMapper extends Mapper<Category> {
+
 }

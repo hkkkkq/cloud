@@ -64,4 +64,11 @@ public interface TemplateService {
      * @return
      */
     List<Template> findAll();
+
+    /**
+     * 根据分类ID查询模板信息
+     * @param id
+     * @return
+     */
+    Template findByCategoryId(Integer id);
 }

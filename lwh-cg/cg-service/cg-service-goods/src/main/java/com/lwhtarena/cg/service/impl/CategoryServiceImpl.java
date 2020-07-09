@@ -168,4 +168,17 @@ public class CategoryServiceImpl implements CategoryService {
     public List<Category> findAll() {
         return categoryMapper.selectAll();
     }
+
+    /**
+     * 根据父节点查找子分类
+     * @param id
+     * @return
+     */
+    @Override
+    public List<Category> findByParentId(Integer id) {
+        Category record =new Category();
+        record.setParentId(id);
+        List<Category> list = categoryMapper.select(record);
+        return list;
+    }
 }
