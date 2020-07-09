@@ -27,7 +27,7 @@ import java.io.IOException;
 // 域名不同 也是跨域  http://www.jd.com  ---> http://www.taobao.com
 //协议一直,端口一致,域名一致就不是跨域  http://www.jd.com:80 --->http://www.jd.com:80 不是跨域
 @RestController
-@CrossOrigin
+//@CrossOrigin
 public class FileController {
     /**
      * 返回 图片的全路径

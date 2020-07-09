@@ -35,14 +35,18 @@ public class FastDFSClient {
     //图片上传
     public static String[] upload(FastDFSFile file) {
         try {
+            /**创建一个Tracker访问的客户端对象TrackerClient**/
             TrackerClient trackerClient = new TrackerClient();
+            /**通过StorageClient访问trackerServer服务，获取连接信息**/
             TrackerServer trackerServer = trackerClient.getConnection();
+            /**通过trackerServer的链接信息可以获取Storage的链接信息，创建StorageClient对象存储Storage的链接信息**/
             StorageClient storageClient = new StorageClient(trackerServer, null);
             //参数1 字节数组
             //参数2 扩展名(不带点)
             //参数3 元数据( 文件的大小,文件的作者,文件的创建时间戳)
             NameValuePair[] meta_list = new NameValuePair[]{new NameValuePair(file.getAuthor()), new NameValuePair(file.getName())};
 
+            /**通过storageClient访问Storage，事项文件上传，并且获取文件上传后的存储信息**/
             String[] strings = storageClient.upload_file(file.getContent(), file.getExt(), meta_list);
 
             return strings;// strings[0]==group1  strings[1]=M00/00/00/wKjThF1aW9CAOUJGAAClQrJOYvs424.jpg
@@ -53,7 +57,12 @@ public class FastDFSClient {
     }
 
 
-    //图片下载
+    /**
+     * 图片下载
+     * @param groupName
+     * @param remoteFileName
+     * @return
+     */
     public static InputStream downFile(String groupName, String remoteFileName) {
         ByteArrayInputStream byteArrayInputStream = null;
         try {
@@ -86,8 +95,11 @@ public class FastDFSClient {
     }
 
 
-    //图片删除
-
+    /**
+     * 图片删除
+     * @param groupName
+     * @param remoteFileName
+     */
     public static void deleteFile(String groupName, String remoteFileName) {
         try {
             //3.创建trackerclient对象
@@ -109,7 +121,6 @@ public class FastDFSClient {
     }
 
     //根据组名获取组的信息
-
     public static StorageServer getStorages(String groupName) {
         try {
             TrackerClient trackerClient = new TrackerClient();
@@ -126,8 +137,13 @@ public class FastDFSClient {
         return null;
     }
 
-    //根据文件名和组名获取文件的信息
 
+    /**
+     * 根据文件名和组名获取文件的信息
+     * @param groupName 文件组名
+     * @param remoteFileName 文件存储路径名字 M00/00/00/wKgBCF8Ga82AQ5oLAAh4pF5PghM212.png
+     * @return
+     */
     public static FileInfo getFile(String groupName, String remoteFileName) {
         try {
             TrackerClient trackerClient = new TrackerClient();
