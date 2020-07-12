@@ -15,6 +15,7 @@
     <modules>
         <module>cg-service-goods</module>
         <module>cg-service-file</module>
+        <module>cg-service-canal</module>
     </modules>
 
     <artifactId>cg-service</artifactId>

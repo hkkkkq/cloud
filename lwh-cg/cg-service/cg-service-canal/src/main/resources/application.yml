@@ -1,0 +1,43 @@
+server:
+  port: 18083
+spring:
+  application:
+    name: canal
+  main:
+    allow-bean-definition-overriding: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7001/eureka
+  instance:
+    prefer-ip-address: true
+feign:
+  hystrix:
+    enabled: true
+#hystrix 配置
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          #如果enabled设置为false，则请求超时交给ribbon控制
+          enabled: true
+        isolation:
+          strategy: SEMAPHORE
+#canal配置
+canal:
+  client:
+    instances:
+      example:
+        host: 192.168.1.8
+        port: 11111
+        ##false时为单机模式，true时为zookeeper高可用模式
+        clusterEnabled: false
+        userName: canal
+        password: canal
+        batchSize: 1000
+        acquireInterval: 1000
+        retryCount: 20
+
+#zookeeper 地址
+#canal.client.instances.example.zookeeperAddress: 10.10.2.137:2181,10.10.2.138:2181,10.10.2.139:2181
