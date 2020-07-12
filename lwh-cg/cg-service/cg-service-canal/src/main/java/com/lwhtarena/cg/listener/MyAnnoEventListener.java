@@ -16,19 +16,28 @@ import java.util.List;
 /**
  * 功能描述: 注解方法测试
  * @author: 刘猛
+ *  rowData.getAfterColumnsList() 增加、修改
+ *  rowData.getBeforeColumnsList() 删除、修改
  * @date: 2019/6/17 13:48
  **/
 @CanalEventListener
 public class MyAnnoEventListener {
-	
+
+	/**
+	 * 增加数据监听
+	 * @param canalMsg 当前操作对象的类型
+	 * @param rowChange 发生变更的一行数据
+	 */
 	@InsertListenPoint
 	public void onEventInsertData(CanalMsg canalMsg, CanalEntry.RowChange rowChange) {
 		System.out.println("======================注解方式（新增数据操作）==========================");
 		List<CanalEntry.RowData> rowDatasList = rowChange.getRowDatasList();
 		for (CanalEntry.RowData rowData : rowDatasList) {
+			/**当前操作的类型**/
 			String sql = "use " + canalMsg.getSchemaName() + ";\n";
 			StringBuffer colums = new StringBuffer();
 			StringBuffer values = new StringBuffer();
+			/**增加、修改**/
 			rowData.getAfterColumnsList().forEach((c) -> {
 				colums.append(c.getName() + ",");
 				values.append("'" + c.getValue() + "',");
@@ -41,7 +50,12 @@ public class MyAnnoEventListener {
 		System.out.println("\n======================================================");
 		
 	}
-	
+
+	/**
+	 * 更新修改监听
+	 * @param canalMsg
+	 * @param rowChange
+	 */
 	@UpdateListenPoint
 	public void onEventUpdateData(CanalMsg canalMsg, CanalEntry.RowChange rowChange) {
 		System.out.println("======================注解方式（更新数据操作）==========================");
@@ -63,7 +77,12 @@ public class MyAnnoEventListener {
 		}
 		System.out.println("\n======================================================");
 	}
-	
+
+	/**
+	 * 删除监听
+	 * @param rowChange
+	 * @param canalMsg
+	 */
 	@DeleteListenPoint
 	public void onEventDeleteData(CanalEntry.RowChange rowChange, CanalMsg canalMsg) {
 		
@@ -94,7 +113,11 @@ public class MyAnnoEventListener {
 			
 		}
 	}
-	
+
+	/**
+	 * 监听创建表
+	 * @param rowChange
+	 */
 	@CreateTableListenPoint
 	public void onEventCreateTable(CanalEntry.RowChange rowChange) {
 		System.out.println("======================注解方式（创建表操作）==========================");
@@ -121,7 +144,6 @@ public class MyAnnoEventListener {
 		System.out.println("======================注解方式（创建索引操作）==========================");
 		System.out.println("use " + canalMsg.getSchemaName()+ ";\n" + rowChange.getSql());
 		System.out.println("\n======================================================");
-		
 	}
 	
 	
