@@ -175,12 +175,12 @@ public class MyAnnoEventListener {
 	public void onEventCustomUpdate(CanalEntry.EventType eventType, CanalEntry.RowChange rowData) {
 		System.out.println("======================注解方式（监听tb_content和tb_content_category）==========================");
 
-		//1.获取列名 为category_id的值
+		/**1.获取列名 为category_id的值**/
 		String categoryId = getColumnValue(eventType, rowData);
-		//2.调用feign 获取该分类下的所有的广告集合
+		/**2.调用feign 获取该分类下的所有的广告集合**/
 		Result<List<Content>> categoryresut = contentFeign.findByCategory(Long.valueOf(categoryId));
 		List<Content> data = categoryresut.getData();
-		//3.使用redisTemplate存储到redis中
+		/**3.使用redisTemplate存储到redis中**/
 		stringRedisTemplate.boundValueOps("content_" + categoryId).set(JSON.toJSONString(data));
 	}
 
@@ -193,11 +193,13 @@ public class MyAnnoEventListener {
 	private String getColumnValue(CanalEntry.EventType eventType, CanalEntry.RowChange rowData) {
 		String categoryId = "";
 		//判断 如果是删除  则获取beforlist
+		/**1.判断更改类型 如果是删除 则需要获取到before的数据**/
 		List<CanalEntry.RowData> rowDatasList = rowData.getRowDatasList();
 		if (eventType == CanalEntry.EventType.DELETE) {
 			for(CanalEntry.RowData rd : rowDatasList){
 				if (!CollectionUtils.isEmpty(rd.getBeforeColumnsList())) {
 					for (CanalEntry.Column c : rd.getBeforeColumnsList()) {
+//						/*column.getName(列的名称   column.getValue() 列对应的值*/
 						if (c.getName().equalsIgnoreCase("category_id")) {
 							categoryId = c.getValue();
 							break;
@@ -207,6 +209,7 @@ public class MyAnnoEventListener {
 			}
 		} else {
 			//判断 如果是添加 或者是更新 获取afterlist
+			/**2.判断是 更新 新增 获取after的数据**/
 			for(CanalEntry.RowData rd : rowDatasList){
 				if (!CollectionUtils.isEmpty(rd.getBeforeColumnsList())) {
 					for (CanalEntry.Column column : rd.getAfterColumnsList()) {
