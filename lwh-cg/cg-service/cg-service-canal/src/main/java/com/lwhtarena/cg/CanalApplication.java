@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * @author liwh
@@ -22,13 +23,10 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * @Version 1.0.0
  * @date 2020/7/12 14:36
  */
-
-//@SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
-//@EnableEurekaClient
-
 @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 @SpringCloudApplication()
 @EnableCanalClient
+@EnableFeignClients(basePackages = {"com.lwhtarena.cg.content.feign"})
 public class CanalApplication {
     public static void main(String[] args) {
         SpringApplication.run(CanalApplication.class,args);

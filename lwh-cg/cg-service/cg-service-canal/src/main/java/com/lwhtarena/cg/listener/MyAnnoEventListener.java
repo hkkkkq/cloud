@@ -1,7 +1,9 @@
 package com.lwhtarena.cg.listener;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.otter.canal.protocol.CanalEntry;
 import com.lwhtarena.cg.annotation.CanalEventListener;
+import com.lwhtarena.cg.annotation.ListenPoint;
 import com.lwhtarena.cg.annotation.ddl.AlertTableListenPoint;
 import com.lwhtarena.cg.annotation.ddl.CreateIndexListenPoint;
 import com.lwhtarena.cg.annotation.ddl.CreateTableListenPoint;
@@ -9,7 +11,12 @@ import com.lwhtarena.cg.annotation.ddl.DropTableListenPoint;
 import com.lwhtarena.cg.annotation.dml.DeleteListenPoint;
 import com.lwhtarena.cg.annotation.dml.InsertListenPoint;
 import com.lwhtarena.cg.annotation.dml.UpdateListenPoint;
+import com.lwhtarena.cg.content.feign.ContentFeign;
+import com.lwhtarena.cg.content.pojo.Content;
 import com.lwhtarena.cg.core.CanalMsg;
+import com.lwhtarena.cg.entity.Result;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.CollectionUtils;
 import java.util.List;
 
@@ -22,6 +29,12 @@ import java.util.List;
  **/
 @CanalEventListener
 public class MyAnnoEventListener {
+
+	@Autowired
+	private ContentFeign contentFeign;
+	//字符串
+	@Autowired
+	private StringRedisTemplate stringRedisTemplate;
 
 	/**
 	 * 增加数据监听
@@ -61,7 +74,7 @@ public class MyAnnoEventListener {
 		System.out.println("======================注解方式（更新数据操作）==========================");
 		List<CanalEntry.RowData> rowDatasList = rowChange.getRowDatasList();
 		for (CanalEntry.RowData rowData : rowDatasList) {
-			
+
 			String sql = "use " + canalMsg.getSchemaName() + ";\n";
 			StringBuffer updates = new StringBuffer();
 			StringBuffer conditions = new StringBuffer();
@@ -144,6 +157,68 @@ public class MyAnnoEventListener {
 		System.out.println("======================注解方式（创建索引操作）==========================");
 		System.out.println("use " + canalMsg.getSchemaName()+ ";\n" + rowChange.getSql());
 		System.out.println("\n======================================================");
+	}
+
+	/**
+	 * 自定义数据库的 操作来监听
+	 * @param eventType
+	 * @param rowData
+	 * destination = "广告词条"
+	 */
+	@ListenPoint(destination = "example",
+			schema = "changgou_content",
+			table = {"tb_content", "tb_content_category"},
+			eventType = {
+					CanalEntry.EventType.UPDATE,
+					CanalEntry.EventType.DELETE,
+					CanalEntry.EventType.INSERT})
+	public void onEventCustomUpdate(CanalEntry.EventType eventType, CanalEntry.RowChange rowData) {
+		System.out.println("======================注解方式（监听tb_content和tb_content_category）==========================");
+
+		//1.获取列名 为category_id的值
+		String categoryId = getColumnValue(eventType, rowData);
+		//2.调用feign 获取该分类下的所有的广告集合
+		Result<List<Content>> categoryresut = contentFeign.findByCategory(Long.valueOf(categoryId));
+		List<Content> data = categoryresut.getData();
+		//3.使用redisTemplate存储到redis中
+		stringRedisTemplate.boundValueOps("content_" + categoryId).set(JSON.toJSONString(data));
+	}
+
+	/**
+	 * 业务操作
+	 * @param eventType
+	 * @param rowData
+	 * @return
+	 */
+	private String getColumnValue(CanalEntry.EventType eventType, CanalEntry.RowChange rowData) {
+		String categoryId = "";
+		//判断 如果是删除  则获取beforlist
+		List<CanalEntry.RowData> rowDatasList = rowData.getRowDatasList();
+		if (eventType == CanalEntry.EventType.DELETE) {
+			for(CanalEntry.RowData rd : rowDatasList){
+				if (!CollectionUtils.isEmpty(rd.getBeforeColumnsList())) {
+					for (CanalEntry.Column c : rd.getBeforeColumnsList()) {
+						if (c.getName().equalsIgnoreCase("category_id")) {
+							categoryId = c.getValue();
+							break;
+						}
+					}
+				}
+			}
+		} else {
+			//判断 如果是添加 或者是更新 获取afterlist
+			for(CanalEntry.RowData rd : rowDatasList){
+				if (!CollectionUtils.isEmpty(rd.getBeforeColumnsList())) {
+					for (CanalEntry.Column column : rd.getAfterColumnsList()) {
+						if (column.getName().equalsIgnoreCase("category_id")) {
+							categoryId = column.getValue();
+							return categoryId;
+						}
+					}
+				}
+			}
+		}
+		return categoryId;
 	}
 	
 	

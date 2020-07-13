@@ -3,11 +3,15 @@ package com.lwhtarena.cg.transfer;
 import com.alibaba.otter.canal.client.CanalConnector;
 import com.alibaba.otter.canal.protocol.CanalEntry;
 import com.alibaba.otter.canal.protocol.Message;
+import com.alibaba.otter.canal.protocol.exception.CanalClientException;
 import com.lwhtarena.cg.annotation.CanalEventListener;
 import com.lwhtarena.cg.annotation.ListenPoint;
+import com.lwhtarena.cg.config.CanalClientConfiguration;
 import com.lwhtarena.cg.core.CanalMsg;
 import com.lwhtarena.cg.core.ListenerPoint;
 import com.lwhtarena.cg.properties.CanalProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
@@ -25,8 +29,12 @@ import java.util.function.Predicate;
  * @date: 2019/6/17 13:45
  **/
 public class DefaultMessageTransponder extends AbstractMessageTransponder {
-	
-	
+
+	/**
+	 * 记录日志
+	 */
+	private final static Logger logger = LoggerFactory.getLogger(CanalClientConfiguration.class);
+
 	public DefaultMessageTransponder(CanalConnector connector, Map.Entry<String, CanalProperties.Instance> config,
 									 List<CanalEventListener> listeners, List<ListenerPoint> annoListeners) {
 		super(connector, config, listeners, annoListeners);
@@ -46,7 +54,7 @@ public class DefaultMessageTransponder extends AbstractMessageTransponder {
 		//看看指令是否正确
 		Predicate<Map.Entry<Method, ListenPoint>> df = e -> StringUtils.isEmpty(e.getValue().destination())
 				|| e.getValue().destination().equals(destination) || destination == null;
-		
+
 		//看看数据库实例名是否一样
 		Predicate<Map.Entry<Method, ListenPoint>> sf = e -> e.getValue().schema().length == 0
 				|| Arrays.stream(e.getValue().schema()).anyMatch(s -> s.equals(schemaName)) || schemaName == null;
@@ -112,8 +120,7 @@ public class DefaultMessageTransponder extends AbstractMessageTransponder {
 				rowChange = CanalEntry.RowChange.parseFrom(entry.getStoreValue());
 
 			} catch (Exception e) {
-				/*throw new CanalClientException("错误 ##转换错误 , 数据信息:" + entry.toString(),
-						e);*/
+				throw new CanalClientException("错误 ##转换错误 , 数据信息:" + entry.toString(), e);
 			}
 
 			distributeByAnnotation(destination,
@@ -139,7 +146,6 @@ public class DefaultMessageTransponder extends AbstractMessageTransponder {
 										  String schemaName,
 										  String tableName,
 										  CanalEntry.RowChange rowChange) {
-
 		//对注解的监听器进行事件委托
 		if (!CollectionUtils.isEmpty(annoListeners)) {
 			annoListeners.forEach(point -> point
@@ -159,9 +165,10 @@ public class DefaultMessageTransponder extends AbstractMessageTransponder {
 							Object[] args = getInvokeArgs(method, canalMsg, rowChange);
 							method.invoke(point.getTarget(), args);
 						} catch (Exception e) {
-							/*logger.error("{}: 委托 canal 监听器发生错误! 错误类:{}, 方法名:{}",
+							e.printStackTrace();
+							logger.error("{}: 委托 canal 监听器发生错误! 错误类:{}, 方法名:{}",
 									Thread.currentThread().getName(),
-									point.getTarget().getClass().getName(), method.getName());*/
+									point.getTarget().getClass().getName(), method.getName());
 						}
 					}));
 		}

@@ -9,6 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
+    <description>
+        广告同步 利用canal监听数据库技术
+        canal监听微服务
+    </description>
 
     <artifactId>cg-service-canal</artifactId>
     <dependencies>
@@ -37,6 +41,21 @@
 <!--            <artifactId>canal-spring-boot-starter</artifactId>-->
 <!--            <version>1.2.1-RELEASE</version>-->
 <!--        </dependency>-->
+
+        <dependency>
+            <groupId>com.lwhtarena</groupId>
+            <artifactId>cg-service-content-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13</version>
+            <scope>test</scope>
+        </dependency>
+
 
     </dependencies>
 
