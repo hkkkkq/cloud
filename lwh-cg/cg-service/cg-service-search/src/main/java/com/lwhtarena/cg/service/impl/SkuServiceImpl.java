@@ -53,9 +53,14 @@ public class SkuServiceImpl implements SkuService {
         //将sku的列表 转换成es中的skuinfo的列表
         List<SkuInfo> skuInfos = JSON.parseArray(JSON.toJSONString(data), SkuInfo.class);
         for (SkuInfo skuInfo : skuInfos) {
-            //获取规格的数据  {"电视音响效果":"立体声","电视屏幕尺寸":"20英寸","尺码":"165"}
-
-            //转成MAP  key: 规格的名称  value:规格的选项的值
+            /**
+             * 获取规格的数据
+             * 获取sec -> Map(String) ->Map类型 {"电视音响效果":"立体声","电视屏幕尺寸":"20英寸","尺码":"165"}
+             * 如果需要生成动态的域，只需要将该域存入到一个Map<String,Object>对象中即可，该Map<String,Object>的key会生成一个域，域的名字为该Map的key
+             * 当前Map<String,Object>后面的Object的值会作为当前Sku对象该域（key）对应的值
+             *
+             * 转成map  key: 规格的名称  value:规格的选项的值
+             */
             Map<String, Object> map = JSON.parseObject(skuInfo.getSpec(), Map.class);
             skuInfo.setSpecMap(map);
         }

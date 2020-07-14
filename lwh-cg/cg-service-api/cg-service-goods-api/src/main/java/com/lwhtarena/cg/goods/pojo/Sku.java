@@ -97,7 +97,7 @@ public class Sku implements Serializable {
 
     @ApiModelProperty(value = "", required = false)
     @Column(name = "version")
-    private Integer version;//
+    private Integer version;
 
 
     //get方法
