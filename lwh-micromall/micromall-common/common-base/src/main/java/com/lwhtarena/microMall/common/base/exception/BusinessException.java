@@ -28,7 +28,7 @@ public class BusinessException extends RuntimeException {
     }
 
     public BusinessException(ErrorCodeEnum message) {
-        super(message);
+        super(String.valueOf(message));
     }
 
     public BusinessException(String message, Throwable cause) {
