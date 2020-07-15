@@ -2,6 +2,8 @@ package com.lwhtarena.micromall.security.core.properties;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.boot.autoconfigure.social.SocialProperties;
+
 /**
  * 微信登录配置项
  *

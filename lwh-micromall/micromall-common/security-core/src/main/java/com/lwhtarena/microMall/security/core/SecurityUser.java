@@ -1,5 +1,6 @@
 package com.lwhtarena.micromall.security.core;
 
+import org.apache.commons.codec.binary.StringUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

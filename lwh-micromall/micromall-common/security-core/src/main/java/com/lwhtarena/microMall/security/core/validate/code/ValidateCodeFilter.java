@@ -1,6 +1,7 @@
 package com.lwhtarena.micromall.security.core.validate.code;
 
 import com.lwhtarena.micromall.security.core.properties.SecurityConstants;
+import com.lwhtarena.micromall.security.core.properties.SecurityProperties;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,6 +2,7 @@ package com.lwhtarena.micromall.security.core.properties;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.boot.autoconfigure.social.SocialProperties;
 
 /**
  * QQ登录配置项
