@@ -1,5 +1,9 @@
 package com.lwhtarena.micromall.security.server;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
+import org.springframework.security.oauth2.provider.error.WebResponseExceptionTranslator;
+
 /**
  * The class Pc web response exception translator.
  *

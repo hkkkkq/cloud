@@ -1,7 +1,13 @@
 package com.lwhtarena.micromall.security.app.authentication.openid;
 
 
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.social.connect.UsersConnectionRepository;
+import org.springframework.social.security.SocialUserDetailsService;
 import org.springframework.util.CollectionUtils;
 
 import java.util.HashSet;
