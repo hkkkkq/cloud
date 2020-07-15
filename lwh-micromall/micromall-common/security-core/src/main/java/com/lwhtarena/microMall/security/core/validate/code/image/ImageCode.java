@@ -11,7 +11,7 @@
 
 package com.lwhtarena.micromall.security.core.validate.code.image;
 
-import com.paascloud.security.core.validate.code.ValidateCode;
+import com.lwhtarena.micromall.security.core.validate.code.ValidateCode;
 
 import java.awt.image.BufferedImage;
 import java.time.LocalDateTime;

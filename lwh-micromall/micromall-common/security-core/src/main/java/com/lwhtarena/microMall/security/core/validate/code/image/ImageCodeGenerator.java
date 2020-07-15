@@ -12,8 +12,8 @@
 package com.lwhtarena.micromall.security.core.validate.code.image;
 
 import com.google.code.kaptcha.Producer;
-import com.paascloud.security.core.properties.SecurityProperties;
-import com.paascloud.security.core.validate.code.ValidateCodeGenerator;
+import com.lwhtarena.micromall.security.core.properties.SecurityProperties;
+import com.lwhtarena.micromall.security.core.validate.code.ValidateCodeGenerator;
 import org.springframework.web.context.request.ServletWebRequest;
 
 import java.awt.image.BufferedImage;

@@ -1,6 +1,7 @@
 package com.lwhtarena.micromall.security.core.validate.code;
 
 import com.google.code.kaptcha.Producer;
+import com.lwhtarena.micromall.security.core.properties.SecurityProperties;
 import com.lwhtarena.micromall.security.core.validate.code.email.DefaultEmailCodeSender;
 import com.lwhtarena.micromall.security.core.validate.code.email.EmailCodeSender;
 import com.lwhtarena.micromall.security.core.validate.code.image.ImageCodeGenerator;

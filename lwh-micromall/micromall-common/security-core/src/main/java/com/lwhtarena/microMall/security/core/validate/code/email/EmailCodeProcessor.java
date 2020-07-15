@@ -11,11 +11,11 @@
 
 package com.lwhtarena.micromall.security.core.validate.code.email;
 
-import com.paascloud.security.core.properties.SecurityConstants;
-import com.paascloud.security.core.validate.code.ValidateCode;
-import com.paascloud.security.core.validate.code.ValidateCodeGenerator;
-import com.paascloud.security.core.validate.code.ValidateCodeRepository;
-import com.paascloud.security.core.validate.code.impl.AbstractValidateCodeProcessor;
+import com.lwhtarena.micromall.security.core.properties.SecurityConstants;
+import com.lwhtarena.micromall.security.core.validate.code.ValidateCode;
+import com.lwhtarena.micromall.security.core.validate.code.ValidateCodeGenerator;
+import com.lwhtarena.micromall.security.core.validate.code.ValidateCodeRepository;
+import com.lwhtarena.micromall.security.core.validate.code.impl.AbstractValidateCodeProcessor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;

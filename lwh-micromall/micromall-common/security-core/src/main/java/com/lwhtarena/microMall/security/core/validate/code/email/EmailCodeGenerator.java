@@ -11,9 +11,9 @@
 
 package com.lwhtarena.micromall.security.core.validate.code.email;
 
-import com.paascloud.security.core.properties.SecurityProperties;
-import com.paascloud.security.core.validate.code.ValidateCode;
-import com.paascloud.security.core.validate.code.ValidateCodeGenerator;
+import com.lwhtarena.micromall.security.core.properties.SecurityProperties;
+import com.lwhtarena.micromall.security.core.validate.code.ValidateCode;
+import com.lwhtarena.micromall.security.core.validate.code.ValidateCodeGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -11,7 +11,7 @@
 
 package com.lwhtarena.micromall.security.core.validate.code.impl;
 
-import com.paascloud.security.core.validate.code.*;
+import com.lwhtarena.micromall.security.core.validate.code.*;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.ServletRequestBindingException;

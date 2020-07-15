@@ -2,10 +2,10 @@ package com.lwhtarena.micromall.security.core.social.qq.api;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.social.oauth2.AbstractOAuth2ApiBinding;
-import org.springframework.social.oauth2.TokenStrategy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.social.oauth2.AbstractOAuth2ApiBinding;
+import org.springframework.social.oauth2.TokenStrategy;
 
 
 /**

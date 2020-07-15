@@ -2,6 +2,7 @@ package com.lwhtarena.micromall.security.core.social;
 
 import javax.sql.DataSource;
 
+import com.lwhtarena.micromall.security.core.properties.SecurityProperties;
 import com.lwhtarena.micromall.security.core.social.support.PcSpringSocialConfigurer;
 import com.lwhtarena.micromall.security.core.social.support.SocialAuthenticationFilterPostProcessor;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,5 +1,6 @@
 package com.lwhtarena.micromall.security.core.social.weixin.config;
 
+import com.lwhtarena.micromall.security.core.properties.SecurityProperties;
 import com.lwhtarena.micromall.security.core.properties.WeixinProperties;
 import com.lwhtarena.micromall.security.core.social.view.PcConnectView;
 import com.lwhtarena.micromall.security.core.social.weixin.connect.WeixinConnectionFactory;

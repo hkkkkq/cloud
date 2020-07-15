@@ -1,6 +1,7 @@
 package com.lwhtarena.micromall.security.core.social.qq.config;
 
 import com.lwhtarena.micromall.security.core.properties.QQProperties;
+import com.lwhtarena.micromall.security.core.properties.SecurityProperties;
 import com.lwhtarena.micromall.security.core.social.qq.connet.QQConnectionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

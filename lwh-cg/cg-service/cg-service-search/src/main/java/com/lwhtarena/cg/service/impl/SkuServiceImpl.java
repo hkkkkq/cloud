@@ -264,6 +264,9 @@ public class SkuServiceImpl implements SkuService {
         resultMap.put("rows",content);
         resultMap.put("total",totalElements);
         resultMap.put("totalPages",totalPages);
+        resultMap.put("pageNum",pageNum);
+        resultMap.put("pageSize",pageSize);
+
         return resultMap;
     }
 

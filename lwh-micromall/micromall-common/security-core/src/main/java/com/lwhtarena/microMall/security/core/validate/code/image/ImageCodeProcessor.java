@@ -12,10 +12,10 @@
 package com.lwhtarena.micromall.security.core.validate.code.image;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.paascloud.security.core.SecurityResult;
-import com.paascloud.security.core.validate.code.ValidateCodeGenerator;
-import com.paascloud.security.core.validate.code.ValidateCodeRepository;
-import com.paascloud.security.core.validate.code.impl.AbstractValidateCodeProcessor;
+import com.lwhtarena.micromall.security.core.SecurityResult;
+import com.lwhtarena.micromall.security.core.validate.code.ValidateCodeGenerator;
+import com.lwhtarena.micromall.security.core.validate.code.ValidateCodeRepository;
+import com.lwhtarena.micromall.security.core.validate.code.impl.AbstractValidateCodeProcessor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.ServletWebRequest;
 

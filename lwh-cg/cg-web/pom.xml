@@ -9,6 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
+    <modules>
+        <module>cg-web-search</module>
+    </modules>
     <artifactId>cg-web</artifactId>
 
     <description>
