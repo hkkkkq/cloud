@@ -5,11 +5,11 @@ import com.lwhtarena.micromall.common.base.dto.LoginAuthDto;
 import com.lwhtarena.micromall.common.base.enums.ErrorCodeEnum;
 import com.lwhtarena.micromall.common.base.exception.BusinessException;
 import com.lwhtarena.micromall.common.util.PublicUtil;
+import com.lwhtarena.micromall.common.util.ThreadLocalMap;
 import com.lwhtarena.micromall.common.util.wrapper.WrapMapper;
 import com.lwhtarena.micromall.common.util.wrapper.Wrapper;
 import com.lwhtarena.micromall.common.zk.generator.IncrementIdGenerator;
 import com.lwhtarena.micromall.common.zk.generator.UniqueIdGenerator;
-import org.apache.log4j.helpers.ThreadLocalMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

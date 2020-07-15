@@ -1,6 +1,8 @@
 package com.lwhtarena.micromall.common.core.support;
 
 import com.lwhtarena.micromall.common.base.exception.BusinessException;
+import com.lwhtarena.micromall.common.zk.generator.IncrementIdGenerator;
+import com.lwhtarena.micromall.common.zk.generator.UniqueIdGenerator;
 import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

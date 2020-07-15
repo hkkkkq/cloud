@@ -2,7 +2,7 @@ package com.lwhtarena.micromall.common.zk.registry.base;
 
 import com.google.common.base.Preconditions;
 import lombok.Data;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 
 /**

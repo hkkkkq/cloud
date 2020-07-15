@@ -1,6 +1,6 @@
 package com.lwhtarena.micromall.common.core.aspect;
 
-import org.apache.log4j.helpers.ThreadLocalMap;
+import com.lwhtarena.micromall.common.util.ThreadLocalMap;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;

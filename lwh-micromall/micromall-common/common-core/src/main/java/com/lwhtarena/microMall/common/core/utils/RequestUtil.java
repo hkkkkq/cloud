@@ -4,14 +4,15 @@ import com.lwhtarena.micromall.common.base.constant.GlobalConstant;
 import com.lwhtarena.micromall.common.base.dto.LoginAuthDto;
 import com.lwhtarena.micromall.common.base.enums.ErrorCodeEnum;
 import com.lwhtarena.micromall.common.base.exception.BusinessException;
+import com.lwhtarena.micromall.common.util.PublicUtil;
+import com.lwhtarena.micromall.common.util.ThreadLocalMap;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.helpers.ThreadLocalMap;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.codec.Base64;
+import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 

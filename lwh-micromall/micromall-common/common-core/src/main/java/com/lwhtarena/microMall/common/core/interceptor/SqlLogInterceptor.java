@@ -2,6 +2,7 @@ package com.lwhtarena.micromall.common.core.interceptor;
 
 import com.lwhtarena.micromall.common.base.constant.GlobalConstant;
 import com.lwhtarena.micromall.common.core.aspect.NotDisplaySqlAspect;
+import com.lwhtarena.micromall.common.util.ThreadLocalMap;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.BoundSql;
@@ -13,7 +14,6 @@ import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.type.TypeHandlerRegistry;
-import org.apache.log4j.helpers.ThreadLocalMap;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.Order;
 

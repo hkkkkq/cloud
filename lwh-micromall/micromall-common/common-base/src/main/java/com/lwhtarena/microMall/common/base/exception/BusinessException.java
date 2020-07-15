@@ -50,6 +50,10 @@ public class BusinessException extends RuntimeException {
         this.code = codeEnum.code();
     }
 
+    public BusinessException(String s) {
+
+    }
+
     public int getCode() {
         return code;
     }

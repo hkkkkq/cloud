@@ -1,5 +1,6 @@
 package com.lwhtarena.micromall.common.core.utils;
 
+import com.lwhtarena.micromall.common.config.properties.ZookeeperProperties;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

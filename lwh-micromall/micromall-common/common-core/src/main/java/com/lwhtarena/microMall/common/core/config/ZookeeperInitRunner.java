@@ -1,5 +1,7 @@
 package com.lwhtarena.micromall.common.core.config;
 
+import com.lwhtarena.micromall.common.config.properties.PaascloudProperties;
+import com.lwhtarena.micromall.common.zk.registry.RegistryCenterFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
