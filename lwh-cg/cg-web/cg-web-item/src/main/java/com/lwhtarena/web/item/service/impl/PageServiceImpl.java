@@ -2,9 +2,7 @@ package com.lwhtarena.web.item.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.lwhtarena.cg.entity.Result;
-import com.lwhtarena.cg.goods.feign.CategoryFeign;
-import com.lwhtarena.cg.goods.feign.SkuFeign;
-import com.lwhtarena.cg.goods.feign.SpuFeign;
+import com.lwhtarena.cg.goods.feign.GoodsFeign;
 import com.lwhtarena.cg.goods.pojo.Sku;
 import com.lwhtarena.cg.goods.pojo.Spu;
 import com.lwhtarena.web.item.service.PageService;
@@ -32,13 +30,7 @@ import java.util.Map;
 public class PageServiceImpl implements PageService {
 
     @Autowired
-    private SpuFeign spuFeign;
-
-    @Autowired
-    private CategoryFeign categoryFeign;
-
-    @Autowired
-    private SkuFeign skuFeign;
+    private GoodsFeign goodsFeign;
 
     @Autowired
     private TemplateEngine templateEngine;
@@ -56,13 +48,13 @@ public class PageServiceImpl implements PageService {
         //构建数据模型
         Map<String,Object> dataMap = new HashMap<>();
         //获取spu 和SKU列表
-        Result<Spu> result = spuFeign.findById(spuId);
+        Result<Spu> result = goodsFeign.findSpuById(spuId);
         Spu spu = result.getData();
 
         //获取分类信息
-        dataMap.put("category1",categoryFeign.findById(spu.getCategory1Id()).getData());
-        dataMap.put("category2",categoryFeign.findById(spu.getCategory2Id()).getData());
-        dataMap.put("category3",categoryFeign.findById(spu.getCategory3Id()).getData());
+        dataMap.put("category1",goodsFeign.findCategoryById(spu.getCategory1Id()).getData());
+        dataMap.put("category2",goodsFeign.findCategoryById(spu.getCategory2Id()).getData());
+        dataMap.put("category3",goodsFeign.findCategoryById(spu.getCategory3Id()).getData());
         if(spu.getImages()!=null) {
             dataMap.put("imageList", spu.getImages().split(","));
         }
@@ -73,7 +65,7 @@ public class PageServiceImpl implements PageService {
         //根据spuId查询Sku集合
         Sku skuCondition = new Sku();
         skuCondition.setSpuId(spu.getId());
-        Result<List<Sku>> resultSku = skuFeign.findList(skuCondition);
+        Result<List<Sku>> resultSku = goodsFeign.findSkuList(skuCondition);
         dataMap.put("skuList",resultSku.getData());
         return dataMap;
     }

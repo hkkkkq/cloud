@@ -3,7 +3,7 @@ package com.lwhtarena.cg.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.lwhtarena.cg.dao.SkuEsMapper;
 import com.lwhtarena.cg.entity.Result;
-import com.lwhtarena.cg.goods.feign.SkuFeign;
+import com.lwhtarena.cg.goods.feign.GoodsFeign;
 import com.lwhtarena.cg.goods.pojo.Sku;
 import com.lwhtarena.cg.search.pojo.SkuInfo;
 import com.lwhtarena.cg.service.SkuService;
@@ -37,7 +37,7 @@ public class SkuServiceImpl implements SkuService {
 
 
     @Resource
-    private SkuFeign skuFeign;
+    private GoodsFeign skuFeign;
 
     @Resource
     private SkuEsMapper skuEsMapper;

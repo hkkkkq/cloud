@@ -15,6 +15,7 @@ import com.lwhtarena.cg.content.feign.ContentFeign;
 import com.lwhtarena.cg.content.pojo.Content;
 import com.lwhtarena.cg.core.CanalMsg;
 import com.lwhtarena.cg.entity.Result;
+import com.lwhtarena.cg.item.feign.PageFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.CollectionUtils;
@@ -32,6 +33,10 @@ public class MyAnnoEventListener {
 
 	@Autowired
 	private ContentFeign contentFeign;
+
+	@Autowired
+	private PageFeign pageFeign;
+
 	//字符串
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
@@ -182,6 +187,57 @@ public class MyAnnoEventListener {
 		List<Content> data = categoryresut.getData();
 		/**3.使用redisTemplate存储到redis中**/
 		stringRedisTemplate.boundValueOps("content_" + categoryId).set(JSON.toJSONString(data));
+	}
+
+	/**
+	 * 监听类中,监听商品数据库的tb_spu的数据变化,当数据变化的时候生成静态页或者删除静态页
+	 * @param eventType
+	 * @param rowData
+	 */
+	@ListenPoint(destination = "example",
+			schema = "changgou_goods",
+			table = {"tb_spu"},
+			eventType = {
+					CanalEntry.EventType.UPDATE,
+					CanalEntry.EventType.INSERT,
+					CanalEntry.EventType.DELETE})
+	public void onEventCustomSpu(CanalEntry.EventType eventType,CanalEntry.RowChange rowData){
+
+		List<CanalEntry.RowData> rowDatasList = rowData.getRowDatasList();
+
+		//判断操作类型
+		if (eventType == CanalEntry.EventType.DELETE) {
+			String spuId = "";
+			for(CanalEntry.RowData rd: rowDatasList){
+				if(!CollectionUtils.isEmpty(rd.getBeforeColumnsList())){
+					List<CanalEntry.Column> beforeColumnsList =rd.getBeforeColumnsList();
+					for (CanalEntry.Column column : beforeColumnsList) {
+						if (column.getName().equals("id")) {
+							/*spuid*/
+							spuId = column.getValue();
+							break;
+						}
+					}
+				}
+			}
+		}else{
+			/**新增 或者 更新**/
+			String spuId = "";
+			for(CanalEntry.RowData rd: rowDatasList){
+				if(!CollectionUtils.isEmpty(rd.getBeforeColumnsList())){
+					List<CanalEntry.Column> afterColumnsList =rd.getBeforeColumnsList();
+					for (CanalEntry.Column column : afterColumnsList) {
+						if (column.getName().equals("id")) {
+							spuId = column.getValue();
+							break;
+						}
+					}
+				}
+			}
+
+			/**更新 生成静态页**/
+			pageFeign.createHtml(Long.valueOf(spuId));
+		}
 	}
 
 	/**

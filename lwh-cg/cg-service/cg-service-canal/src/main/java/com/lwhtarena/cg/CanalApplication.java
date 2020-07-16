@@ -26,7 +26,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 @SpringCloudApplication()
 @EnableCanalClient
-@EnableFeignClients(basePackages = {"com.lwhtarena.cg.content.feign"})
+@EnableFeignClients(basePackages = {"com.lwhtarena.cg.content.feign","com.lwhtarena.cg.item.feign"})
 public class CanalApplication {
     public static void main(String[] args) {
         SpringApplication.run(CanalApplication.class,args);

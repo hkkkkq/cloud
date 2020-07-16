@@ -16,6 +16,7 @@
         <module>cg-service-goods-api</module>
         <module>cg-service-content-api</module>
         <module>cg-service-search-api</module>
+        <module>cg-web-item-api</module>
     </modules>
 
     <artifactId>cg-service-api</artifactId>
