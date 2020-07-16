@@ -10,7 +10,7 @@
 
     <!-- Appender to log to console -->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+        <filter class="ch.qos.logback.classic.com.lwhtarena.cg.filter.ThresholdFilter">
             <!-- Minimum logging level to be presented in the console logs -->
             <level>DEBUG</level>
         </filter>

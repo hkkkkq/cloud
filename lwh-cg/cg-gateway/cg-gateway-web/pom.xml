@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>cg-gateway</artifactId>
+        <groupId>com.lwhtarena</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>cg-gateway-web</artifactId>
+    <description>
+        普通web请求网关
+        网关主要用于对后台微服务进行一个调用操作，将多个微服务串联到一起。
+        微服务网关（用户微服务网关|前台微服务网关）--实际生产中，会分离出多套网关
+    </description>
+
+
+</project>

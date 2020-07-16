@@ -8,13 +8,39 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>cg-gateway</artifactId>
+    <packaging>pom</packaging>
     <description>
         网关的相关模块的父工程；
         网关模块，根据网站的规模和需要，可以将综合逻辑相关的服务用网关路由组合到一起。在这里还可以做鉴权和限流相关操作。
     </description>
+    <modules>
+        <module>cg-gateway-web</module>
+    </modules>
 
-    <artifactId>cg-gateway</artifactId>
-    <packaging>pom</packaging>
+    <!--网关依赖-->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <!--redis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+            <version>2.3.1.RELEASE</version>
+        </dependency>
+    </dependencies>
 
 
 </project>
