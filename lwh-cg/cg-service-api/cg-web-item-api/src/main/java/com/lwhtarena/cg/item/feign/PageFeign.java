@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @date 2020/7/16 10:25
  */
 @FeignClient(name = "item")
-@RequestMapping
+@RequestMapping("/page")
 public interface PageFeign {
 
     /**
@@ -22,5 +22,6 @@ public interface PageFeign {
      * @param id
      * @return
      */
-    Result createHtml(@PathVariable(name = "id") long id);
+    @RequestMapping("/createHtml/{id}")
+    Result createHtml(@PathVariable(name = "id") Long id);
 }
