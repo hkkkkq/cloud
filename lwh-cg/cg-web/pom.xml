@@ -11,6 +11,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>cg-web-search</module>
+        <module>cg-web-item</module>
     </modules>
     <artifactId>cg-web</artifactId>
 

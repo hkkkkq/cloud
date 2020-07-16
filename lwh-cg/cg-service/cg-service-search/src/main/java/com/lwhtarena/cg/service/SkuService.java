@@ -20,7 +20,7 @@ public interface SkuService {
 
 
     /**
-     *
+     * 搜索
      * @param searchMap
      * @return
      */

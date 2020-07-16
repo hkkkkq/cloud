@@ -21,4 +21,13 @@ public interface SkuFeign {
 
     @GetMapping
     public Map search(@RequestParam(required = false) Map searchMap);
+
+//    /**
+//     * 查询符合条件的状态的SKU的列表
+//     * @param status
+//     * @return
+//     */
+//    @GetMapping("/status/{status}")
+//    public Result<List<Sku>> findByStatus(@PathVariable(name="status") String status);
+
 }

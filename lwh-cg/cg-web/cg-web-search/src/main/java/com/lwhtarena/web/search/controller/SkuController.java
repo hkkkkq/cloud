@@ -41,9 +41,8 @@ public class SkuController {
 
         //4.记住之前的URL
         //拼接url
-        String[] urls = url(searchMap);
-        model.addAttribute("url",urls[0]);
-        model.addAttribute("sorturl",urls[1]);
+        String url = url(searchMap);
+        model.addAttribute("url",url);
 
         //创建一个分页的对象  可以获取当前页 和总个记录数和显示的页码(以当前页为中心的5个页码)
         Page<SkuInfo> infoPage = new Page<SkuInfo>(
@@ -57,14 +56,11 @@ public class SkuController {
         return "search";
     }
 
-    private String[] url(Map<String, String> searchMap) {
+    private String url(Map<String, String> searchMap) {
         /**初始化地址**/
         String url = "/search/list";
-        /**排序地址**/
-        String sorturl ="/search/list";
         if(searchMap!=null && searchMap.size()>0){
             url+="?";
-            sorturl+="?";
             for (Map.Entry<String, String> stringStringEntry : searchMap.entrySet()) {
                 /**keywords / brand  / category**/
                 String key = stringStringEntry.getKey();
@@ -79,7 +75,7 @@ public class SkuController {
                 if(key.equalsIgnoreCase("sortFiel")||key.equalsIgnoreCase("sortRule")){
                     continue;
                 }
-                sorturl+=key+"="+value+"&";
+                url+=key+"="+value+"&";
             }
 
             //去掉多余的&
@@ -87,12 +83,7 @@ public class SkuController {
                 url =  url.substring(0,url.lastIndexOf("&"));
             }
 
-            //去掉多余的&
-            if(sorturl.lastIndexOf("&")!=-1){
-                sorturl =  sorturl.substring(0,sorturl.lastIndexOf("&"));
-            }
-
         }
-        return new String[]{url,sorturl};
+        return url;
     }
 }
