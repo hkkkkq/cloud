@@ -19,7 +19,7 @@ spring:
               - PUT
               - DELETE
       routes:
-        - id: changgou_goods_route
+        - id: cg_goods_route
           ###lb:使用LoadBalancerClient实现负载均衡，后面goods是提供微服务的名称【主要应用于集群环境】
           uri: lb://goods
           predicates:
@@ -34,14 +34,14 @@ spring:
                 redis-rate-limiter.replenishRate: 1 #redis-rate-limiter.replenishRate 是您希望允许用户每秒执行多少请求，而不会丢弃任何请求。这是令牌桶填充的速率
                 redis-rate-limiter.burstCapacity: 1 #是指令牌桶的容量，允许在一秒钟内完成的最大请求数,将此值设置为零将阻止所有请求。
         #用户微服务
-        - id: changgou_user_route
+        - id: cg_user_route
           uri: lb://user
           predicates:
             - Path=/api/user/**,/api/address/**,/api/areas/**,/api/cities/**,/api/provinces/**
           filters:
             - StripPrefix=1
 
-        - id: changgou_order_route
+        - id: cg_order_route
           uri: lb://order
           predicates:
             - Path=/api/cart/**,/api/categoryReport/**,/api/orderConfig/**,/api/order/**,/api/orderItem/**,/api/orderLog/**,/api/preferential/**,/api/returnCause/**,/api/returnOrder/**,/api/returnOrderItem/**
