@@ -29,9 +29,6 @@ public class CartServiceImpl implements CartService {
     @Autowired
     private RedisTemplate redisTemplate;
 
-
-    //创建feign (SKUfeign SPU的feign)
-
     @Override
     public void add(Long id, Integer num, String username) {
 

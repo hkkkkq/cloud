@@ -4,7 +4,7 @@ package com.lwhtarena.cg.filter;
  * @author liwh
  * @Title: UrlFilter
  * @Package filter
- * @Description:
+ * @Description: 用户如果是登录、注册等（一些不需要做权限认证的请求，直接放行）
  * @Version 1.0.0
  * @date 2020/7/16 15:36
  */
