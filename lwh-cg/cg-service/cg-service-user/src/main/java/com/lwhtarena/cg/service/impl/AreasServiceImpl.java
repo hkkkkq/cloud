@@ -4,7 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lwhtarena.cg.dao.AreasMapper;
 import com.lwhtarena.cg.service.AreasService;
-import com.lwhtarena.cg.user.Areas;
+import com.lwhtarena.cg.user.pojo.Areas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

@@ -80,15 +80,27 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
         }
 
         //5 解析令牌数据 ( 判断解析是否正确,正确 就放行 ,否则 结束)
+//        try {
+//            Claims claims = JwtUtil.parseJWT(token);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            //解析失败
+//            response.setStatusCode(HttpStatus.UNAUTHORIZED);
+//            return response.setComplete();
+//        }
+//        /**令牌为空，则允许访问，直接拦截 Bearer **/
+//        if(StringUtils.isEmpty(token)){
+//            /**设置没有权限的状态码**/
+//            response.setStatusCode(HttpStatus.UNAUTHORIZED);
+//            /**响应空数据**/
+//            return response.setComplete();
+//        }else{
+//            /**判断当前令牌是否有Bearer前缀，如果没有，则添加前缀**/
+//            if(!token.startsWith("Bearer ")&&!token.startsWith("bearer ")){
+//                token ="Bearer "+token;
+//            }
+//        }
 
-        try {
-            Claims claims = JwtUtil.parseJWT(token);
-        } catch (Exception e) {
-            e.printStackTrace();
-            //解析失败
-            response.setStatusCode(HttpStatus.UNAUTHORIZED);
-            return response.setComplete();
-        }
 
         /**
          * 添加头信息 传递给 各个微服务()

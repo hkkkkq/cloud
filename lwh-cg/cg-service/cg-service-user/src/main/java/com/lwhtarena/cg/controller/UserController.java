@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.lwhtarena.cg.entity.*;
 import com.github.pagehelper.PageInfo;
 import com.lwhtarena.cg.service.UserService;
-import com.lwhtarena.cg.user.User;
+import com.lwhtarena.cg.user.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;

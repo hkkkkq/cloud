@@ -1,5 +1,5 @@
 package com.lwhtarena.cg.dao;
-import com.lwhtarena.cg.user.Areas;
+import com.lwhtarena.cg.user.pojo.Areas;
 import tk.mybatis.mapper.common.Mapper;
 
 /****

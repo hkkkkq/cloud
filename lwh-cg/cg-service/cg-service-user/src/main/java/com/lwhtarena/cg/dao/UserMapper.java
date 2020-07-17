@@ -1,5 +1,5 @@
 package com.lwhtarena.cg.dao;
-import com.lwhtarena.cg.user.User;
+import com.lwhtarena.cg.user.pojo.User;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
 import tk.mybatis.mapper.common.Mapper;

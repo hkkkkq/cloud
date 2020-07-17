@@ -1,6 +1,6 @@
 package com.lwhtarena.cg.dao;
 
-import com.lwhtarena.cg.user.Address;
+import com.lwhtarena.cg.user.pojo.Address;
 import tk.mybatis.mapper.common.Mapper;
 
 /****

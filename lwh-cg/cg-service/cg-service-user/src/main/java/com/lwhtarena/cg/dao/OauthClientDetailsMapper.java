@@ -1,5 +1,5 @@
 package com.lwhtarena.cg.dao;
-import com.lwhtarena.cg.user.OauthClientDetails;
+import com.lwhtarena.cg.user.pojo.OauthClientDetails;
 import tk.mybatis.mapper.common.Mapper;
 
 /****

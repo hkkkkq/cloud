@@ -1,7 +1,7 @@
 package com.lwhtarena.cg.service;
 
 import com.github.pagehelper.PageInfo;
-import com.lwhtarena.cg.user.Areas;
+import com.lwhtarena.cg.user.pojo.Areas;
 
 import java.util.List;
 

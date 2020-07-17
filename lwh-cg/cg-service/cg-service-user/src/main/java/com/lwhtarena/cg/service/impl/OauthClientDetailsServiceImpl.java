@@ -4,7 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lwhtarena.cg.dao.OauthClientDetailsMapper;
 import com.lwhtarena.cg.service.OauthClientDetailsService;
-import com.lwhtarena.cg.user.OauthClientDetails;
+import com.lwhtarena.cg.user.pojo.OauthClientDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

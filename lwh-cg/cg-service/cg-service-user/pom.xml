@@ -16,6 +16,8 @@
             <artifactId>cg-service-user-api</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <!--oauth2.0 令牌解析-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-oauth2</artifactId>

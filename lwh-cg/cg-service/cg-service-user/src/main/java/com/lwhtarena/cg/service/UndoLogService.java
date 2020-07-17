@@ -1,7 +1,7 @@
 package com.lwhtarena.cg.service;
 
 import com.github.pagehelper.PageInfo;
-import com.lwhtarena.cg.user.UndoLog;
+import com.lwhtarena.cg.user.pojo.UndoLog;
 
 import java.util.List;
 

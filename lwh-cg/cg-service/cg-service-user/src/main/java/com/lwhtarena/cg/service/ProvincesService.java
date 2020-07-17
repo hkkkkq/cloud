@@ -1,7 +1,7 @@
 package com.lwhtarena.cg.service;
 
 import com.github.pagehelper.PageInfo;
-import com.lwhtarena.cg.user.Provinces;
+import com.lwhtarena.cg.user.pojo.Provinces;
 
 import java.util.List;
 

@@ -4,7 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lwhtarena.cg.dao.CitiesMapper;
 import com.lwhtarena.cg.service.CitiesService;
-import com.lwhtarena.cg.user.Cities;
+import com.lwhtarena.cg.user.pojo.Cities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

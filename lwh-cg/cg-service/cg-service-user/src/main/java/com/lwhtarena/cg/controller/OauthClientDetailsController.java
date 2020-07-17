@@ -4,7 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.lwhtarena.cg.entity.Result;
 import com.lwhtarena.cg.entity.StatusCode;
 import com.lwhtarena.cg.service.OauthClientDetailsService;
-import com.lwhtarena.cg.user.OauthClientDetails;
+import com.lwhtarena.cg.user.pojo.OauthClientDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -16,15 +16,10 @@ import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-/**
- * 描述
- *
- * @author www.itheima.com
- * @version 1.0
- * @package com.changgou.order.config *
- * @since 1.0
- */
 
+/**
+ *
+ */
 @Component
 public class TokenDecode {
 

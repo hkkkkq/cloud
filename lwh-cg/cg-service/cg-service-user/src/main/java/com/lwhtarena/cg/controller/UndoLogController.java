@@ -2,7 +2,7 @@ package com.lwhtarena.cg.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.lwhtarena.cg.service.UndoLogService;
-import com.lwhtarena.cg.user.UndoLog;
+import com.lwhtarena.cg.user.pojo.UndoLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.lwhtarena.cg.entity.Result;

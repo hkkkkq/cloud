@@ -1,7 +1,7 @@
 package com.lwhtarena.cg.service;
 
 import com.github.pagehelper.PageInfo;
-import com.lwhtarena.cg.user.OauthClientDetails;
+import com.lwhtarena.cg.user.pojo.OauthClientDetails;
 
 import java.util.List;
 

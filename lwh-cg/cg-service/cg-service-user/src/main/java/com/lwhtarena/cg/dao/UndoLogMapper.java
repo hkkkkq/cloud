@@ -1,5 +1,5 @@
 package com.lwhtarena.cg.dao;
-import com.lwhtarena.cg.user.UndoLog;
+import com.lwhtarena.cg.user.pojo.UndoLog;
 import tk.mybatis.mapper.common.Mapper;
 
 /****

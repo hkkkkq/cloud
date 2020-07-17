@@ -4,7 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lwhtarena.cg.dao.ProvincesMapper;
 import com.lwhtarena.cg.service.ProvincesService;
-import com.lwhtarena.cg.user.Provinces;
+import com.lwhtarena.cg.user.pojo.Provinces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

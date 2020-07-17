@@ -5,7 +5,7 @@ import com.lwhtarena.cg.config.TokenDecode;
 import com.lwhtarena.cg.entity.Result;
 import com.lwhtarena.cg.entity.StatusCode;
 import com.lwhtarena.cg.service.AddressService;
-import com.lwhtarena.cg.user.Address;
+import com.lwhtarena.cg.user.pojo.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -17,14 +17,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.stream.Collectors;
 
-/**
- * 描述
- *
- * @author www.itheima.com
- * @version 1.0
- * @package com.changgou.user.config *
- * @since 1.0
- */
 @Configuration
 // 开启 资源服务器(标识他是一个oauth2中的资源服务器)
 @EnableResourceServer
@@ -56,8 +48,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     }
 
     /**
+     * 加载资源public.key,读取文件信息
      * 获取非对称加密公钥 Key
-     *
      * @return 公钥 Key
      */
     private String getPubKey() {
@@ -81,7 +73,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
         //放行 用户注册的请求
         //其他的请求  必须有登录之后才能访问 (校验token合法才可以访问)
-
 
         //所有请求必须认证通过
         http.authorizeRequests()

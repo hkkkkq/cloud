@@ -15,6 +15,12 @@
     </description>
 
     <dependencies>
+        <dependency>
+            <groupId>com.lwhtarena</groupId>
+            <artifactId>cg-service-order-api</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
 

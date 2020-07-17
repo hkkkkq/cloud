@@ -4,7 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lwhtarena.cg.dao.AddressMapper;
 import com.lwhtarena.cg.service.AddressService;
-import com.lwhtarena.cg.user.Address;
+import com.lwhtarena.cg.user.pojo.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

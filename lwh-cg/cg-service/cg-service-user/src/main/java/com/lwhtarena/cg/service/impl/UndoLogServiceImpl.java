@@ -4,7 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lwhtarena.cg.dao.UndoLogMapper;
 import com.lwhtarena.cg.service.UndoLogService;
-import com.lwhtarena.cg.user.UndoLog;
+import com.lwhtarena.cg.user.pojo.UndoLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
