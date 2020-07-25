@@ -54,6 +54,10 @@ public class CartController {
 
     }
 
+    /**
+     * 购物车列表
+     * @return
+     */
     @RequestMapping("/list")
     public Result<List<OrderItem>> list() {
         Map<String, String> userInfo = tokenDecode.getUserInfo();

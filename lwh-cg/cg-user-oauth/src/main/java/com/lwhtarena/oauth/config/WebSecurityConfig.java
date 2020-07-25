@@ -17,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * @Title: WebSecurityConfig
  * @Package com.lwhtarena.oauth.config
  * @Description:
+ *
  * @Version 1.0.0
  * @date 2020/7/17 10:12
  */
@@ -26,12 +27,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /***
+     * 针对静态资源和登录页，我们需要实现忽略安全配置，并且要指定登录页面
      * 忽略安全拦截的URL
      * @param web
      * @throws Exception
      */
     @Override
     public void configure(WebSecurity web) throws Exception {
+        /**放行地址配置**/
         web.ignoring().antMatchers(
                 "/user/login",
                 "/user/logout","/oauth/login","/css/**","/data/**","/fonts/**","/img/**","/js/**");
@@ -74,10 +77,12 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic()        //启用Http基本身份验证
                 .and()
                 .formLogin()       //启用表单身份验证
-                .loginPage("/oauth/login")
-                .loginProcessingUrl("/user/login")
+                .loginPage("/oauth/login") //自定义登录地址
+                .loginProcessingUrl("/user/login") //登录处理地址（SpringSecurity内置地址）
                 .and()
                 .authorizeRequests()    //限制基于Request请求访问
+                .antMatchers("/oauth/**","/login/**","/logout/**")
+                .permitAll()
                 .anyRequest()
                 .authenticated();       //其他请求都需要经过验证
 

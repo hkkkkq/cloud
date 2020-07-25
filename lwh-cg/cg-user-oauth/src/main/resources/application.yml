@@ -31,7 +31,7 @@ auth:
   ttl: 3600  #token存储到redis的过期时间
   clientId: changgou           #客户端id
   clientSecret: changgou      #秘钥
-  cookieDomain: localhost
+  cookieDomain: localhost     #域
   cookieMaxAge: -1
 encrypt:
   key-store:

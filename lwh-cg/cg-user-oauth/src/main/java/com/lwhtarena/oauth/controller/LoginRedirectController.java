@@ -16,6 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/oauth")
 public class LoginRedirectController {
 
+    /**
+     * 跳转到登录页面
+     * @param From
+     * @param model
+     * @return
+     */
     @RequestMapping("/login")
     public String login(String From, Model model) {
         model.addAttribute("from",From);

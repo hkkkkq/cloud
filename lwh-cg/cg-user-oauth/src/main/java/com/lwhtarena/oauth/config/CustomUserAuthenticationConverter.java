@@ -30,7 +30,7 @@ public class CustomUserAuthenticationConverter extends DefaultUserAuthentication
     public Map<String, ?> convertUserAuthentication(Authentication authentication) {
         LinkedHashMap response = new LinkedHashMap();
         String name = authentication.getName();
-        response.put("username", name);
+        response.put("username", name);//客户端id
 
         Object principal = authentication.getPrincipal();
         UserJwt userJwt = null;

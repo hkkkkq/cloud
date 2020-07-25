@@ -17,6 +17,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.stream.Collectors;
 
+
+/**
+ * 配置每个系统的http请求路径安全控制策略以及读取公钥信息识别令牌
+ */
 @Configuration
 // 开启 资源服务器(标识他是一个oauth2中的资源服务器)
 @EnableResourceServer

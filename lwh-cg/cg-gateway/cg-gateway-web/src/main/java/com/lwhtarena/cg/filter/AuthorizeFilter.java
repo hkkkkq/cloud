@@ -1,7 +1,5 @@
 package com.lwhtarena.cg.filter;
 
-import com.lwhtarena.cg.util.JwtUtil;
-import io.jsonwebtoken.Claims;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
@@ -18,7 +16,8 @@ import reactor.core.publisher.Mono;
  * @author liwh
  * @Title: AuthorizeFilter
  * @Package com.lwhtarena.cg.filter
- * @Description:  全局过滤器 :用于鉴权(获取令牌 解析 判断)
+ * @Description:  自定义全局过滤器
+ *     全局过滤器 :用于鉴权(获取令牌 解析 判断)
  * @Version 1.0.0
  * @date 2020/7/16 15:38
  */
@@ -30,7 +29,7 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
     private static final String loginURL = "http://localhost:9001/oauth/login";
 
     /**
-     * 全局拦截
+     * 全局拦截[全局过滤器]
      * @param exchange
      * @param chain
      * @return
@@ -47,15 +46,15 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
         if(UrlFilter.hasAutorize(request.getURI().toString())){
             return chain.filter(exchange);
         }
-        //4.判断 是否为登录的URL 如果不是      权限校验
 
+        //4.判断 是否为登录的URL 如果不是      权限校验
         /**
          * 获取用户令牌信息三个途径
          * 1）头文件中
          * 2）参数获取令牌
          * 3）Cookie中
          */
-        //4.1 从头header中获取令牌数据
+        //4.1 从头header中获取令牌数据（获取头文件中的令牌）
         String token = request.getHeaders().getFirst(AUTHORIZE_TOKEN);
 
         if(StringUtils.isEmpty(token)){
@@ -79,7 +78,7 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
             return response.setComplete();
         }
 
-        //5 解析令牌数据 ( 判断解析是否正确,正确 就放行 ,否则 结束)
+        //5 解析令牌数据 ( 判断解析是否正确,正确 就放行 ,否则 结束 )
 //        try {
 //            Claims claims = JwtUtil.parseJWT(token);
 //        } catch (Exception e) {

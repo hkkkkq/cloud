@@ -34,6 +34,15 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     private LoadBalancerClient loadBalancerClient;
 
+    /**
+     * 模拟登陆
+     * @param username
+     * @param password
+     * @param clientId
+     * @param clientSecret
+     * @param grandType
+     * @return
+     */
     @Override
     public AuthToken login(String username, String password, String clientId, String clientSecret, String grandType) {
 
@@ -77,7 +86,6 @@ public class LoginServiceImpl implements LoginService {
         authToken.setJti(jwtToken);
         authToken.setAccessToken(accessToken);
         authToken.setRefreshToken(refreshToken);
-
 
         //6.返回
         return authToken;

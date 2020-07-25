@@ -1,7 +1,6 @@
 package com.lwhtarena.oauth.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.bootstrap.encrypt.KeyProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -105,15 +104,14 @@ class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
                 .checkTokenAccess("isAuthenticated()");
     }
 
+    @Resource(name = "keyProp")
+    private KeyProperties keyProperties;
 
     /**读取密钥的配置**/
     @Bean("keyProp")
     public KeyProperties keyProperties(){
         return new KeyProperties();
     }
-
-    @Resource(name = "keyProp")
-    private KeyProperties keyProperties;
 
     /**客户端配置**/
     @Bean

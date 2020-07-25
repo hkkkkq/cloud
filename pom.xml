@@ -16,6 +16,7 @@
         <module>lwh-hk</module>
         <module>lwh-ms</module>
         <module>lwh-cg</module>
+        <module>lwh-gl</module>
     </modules>
     <packaging>pom</packaging>
     <description>

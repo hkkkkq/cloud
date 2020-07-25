@@ -56,7 +56,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //                        new BCryptPasswordEncoder().encode(clientSecret), /**客户端秘钥->加密操作**/
 //                        AuthorityUtils.commaSeparatedStringToAuthorityList("")); /**权限**/
                 /**数据库查找方式**/
-                return new User(username,clientSecret, AuthorityUtils.commaSeparatedStringToAuthorityList(""));
+                return new User(
+                        /**客户端ID**/
+                        username,
+                        /**客户端秘钥**/
+                        clientSecret,
+                        AuthorityUtils.commaSeparatedStringToAuthorityList(""));
             }
         }
         /**----========================= 客户端信息认证 end =====================---**/
@@ -69,7 +74,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         //根据用户名查询用户信息
         //String pwd = new BCryptPasswordEncoder().encode("szitheima");
         String pwd = userFeign.findByUsername(username).getData().getPassword();
-        //创建User对象  授予权限.GOODS_LIST  SECKILL_LIST
+        //创建User对象  授予权限.GOODS_LIST  SECKILL_LIST 此时是硬编码
         String permissions = "goods_list,seckill_list"; /**可以设计角色权限表，从数据库加载出来**/
 
 

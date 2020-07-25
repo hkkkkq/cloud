@@ -8,6 +8,10 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <description>
+        基本上所有的微服务都是资源服务，譬如用户微服务
+        都需要添加spring-cloud-starter-oauth2
+    </description>
 
     <artifactId>cg-service-user</artifactId>
     <dependencies>
