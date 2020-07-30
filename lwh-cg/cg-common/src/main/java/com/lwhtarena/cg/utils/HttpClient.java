@@ -1,4 +1,4 @@
-package com.lwhtarena.cg.entity;
+package com.lwhtarena.cg.utils;
 
 import org.apache.http.Consts;
 import org.apache.http.HttpEntity;

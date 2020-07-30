@@ -1,10 +1,10 @@
 package com.lwhtarena.cg.controller;
 
-import com.lwhtarena.cg.config.TokenDecode;
-import com.lwhtarena.cg.entity.Result;
-import com.lwhtarena.cg.entity.StatusCode;
+import com.lwhtarena.cg.vo.Result;
+import com.lwhtarena.cg.constants.StatusCode;
 import com.lwhtarena.cg.order.pojo.OrderItem;
 import com.lwhtarena.cg.service.CartService;
+import com.lwhtarena.cg.utils.TokenDecode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,9 +41,9 @@ public class CartController {
     @RequestMapping("/add")
     public Result add(Long id, Integer num) {
         //springsecurity 获取当前的用户名 传递service
+//        String username = "changgou";
 
-//        String username = "szitheima";
-
+        /**用户的令牌信息-》解析令牌信息-》登录认证名 **/
         Map<String, String> userInfo = tokenDecode.getUserInfo();
         String username = userInfo.get("username");
 

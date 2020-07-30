@@ -1,11 +1,11 @@
 package com.lwhtarena.cg.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.lwhtarena.cg.config.TokenDecode;
-import com.lwhtarena.cg.entity.Result;
-import com.lwhtarena.cg.entity.StatusCode;
+import com.lwhtarena.cg.vo.Result;
+import com.lwhtarena.cg.constants.StatusCode;
 import com.lwhtarena.cg.order.pojo.Order;
 import com.lwhtarena.cg.service.OrderService;
+import com.lwhtarena.cg.utils.TokenDecode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -103,6 +103,7 @@ public class OrderController {
     public Result<Order> add(@RequestBody Order order) {
         //调用OrderService实现添加Order
         order.setUsername(tokenDecode.getUserInfo().get("username"));
+        order.setUsername("hello");
         Order orderResult = orderService.add(order);
         return new Result(true, StatusCode.OK, "添加成功",orderResult);
     }

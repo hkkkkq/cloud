@@ -1,6 +1,6 @@
 package com.lwhtarena.cg.goods.feign;
 
-import com.lwhtarena.cg.entity.Result;
+import com.lwhtarena.cg.vo.Result;
 import com.lwhtarena.cg.goods.pojo.Category;
 import com.lwhtarena.cg.goods.pojo.Sku;
 import com.lwhtarena.cg.goods.pojo.Spu;
@@ -38,6 +38,11 @@ public interface GoodsFeign {
     @PostMapping(value = "/sku/search")
     public Result<List<Sku>> findSkuList(@RequestBody(required = false) Sku sku);
 
+    /**
+     * 根据id查询sku数据
+     * @param id
+     * @return
+     */
     @GetMapping("/sku/{id}")
     public Result<Sku> findById(@PathVariable(name="id") Long id);
 
@@ -55,6 +60,11 @@ public interface GoodsFeign {
     public Result<Category> findCategoryById(@PathVariable(name = "id") Integer id);
 
     /**----====================== spu ===========================----**/
+    /**
+     * 根据id查询spu数据
+     * @param id
+     * @return
+     */
     @GetMapping("/spu/{id}")
     public Result<Spu> findSpuById(@PathVariable(name = "id") Long id);
 }

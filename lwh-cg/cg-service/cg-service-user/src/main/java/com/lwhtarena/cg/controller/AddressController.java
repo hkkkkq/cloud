@@ -2,8 +2,8 @@ package com.lwhtarena.cg.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.lwhtarena.cg.config.TokenDecode;
-import com.lwhtarena.cg.entity.Result;
-import com.lwhtarena.cg.entity.StatusCode;
+import com.lwhtarena.cg.vo.Result;
+import com.lwhtarena.cg.constants.StatusCode;
 import com.lwhtarena.cg.service.AddressService;
 import com.lwhtarena.cg.user.pojo.Address;
 import org.springframework.beans.factory.annotation.Autowired;

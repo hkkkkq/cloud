@@ -1,7 +1,7 @@
 package com.lwhtarena.web.item.controller;
 
-import com.lwhtarena.cg.entity.Result;
-import com.lwhtarena.cg.entity.StatusCode;
+import com.lwhtarena.cg.vo.Result;
+import com.lwhtarena.cg.constants.StatusCode;
 import com.lwhtarena.web.item.service.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

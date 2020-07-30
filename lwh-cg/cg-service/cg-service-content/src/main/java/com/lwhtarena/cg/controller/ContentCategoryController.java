@@ -2,8 +2,8 @@ package com.lwhtarena.cg.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.lwhtarena.cg.content.pojo.ContentCategory;
-import com.lwhtarena.cg.entity.Result;
-import com.lwhtarena.cg.entity.StatusCode;
+import com.lwhtarena.cg.vo.Result;
+import com.lwhtarena.cg.constants.StatusCode;
 import com.lwhtarena.cg.service.ContentCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

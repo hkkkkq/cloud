@@ -1,4 +1,6 @@
-package com.lwhtarena.cg.entity;
+package com.lwhtarena.cg.vo;
+
+import com.lwhtarena.cg.constants.StatusCode;
 
 import java.io.Serializable;
 

@@ -1,7 +1,7 @@
 package com.lwhtarena.oauth.controller;
 
-import com.lwhtarena.cg.entity.Result;
-import com.lwhtarena.cg.entity.StatusCode;
+import com.lwhtarena.cg.vo.Result;
+import com.lwhtarena.cg.constants.StatusCode;
 import com.lwhtarena.oauth.service.LoginService;
 import com.lwhtarena.oauth.util.AuthToken;
 import com.lwhtarena.oauth.util.CookieUtil;

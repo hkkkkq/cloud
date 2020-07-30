@@ -1,7 +1,7 @@
 package com.lwhtarena.cg.content.feign;
 
 import com.lwhtarena.cg.content.pojo.Content;
-import com.lwhtarena.cg.entity.Result;
+import com.lwhtarena.cg.vo.Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

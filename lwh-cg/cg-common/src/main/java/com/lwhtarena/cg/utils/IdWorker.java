@@ -1,4 +1,4 @@
-package com.lwhtarena.cg.entity;
+package com.lwhtarena.cg.utils;
 
 import java.lang.management.ManagementFactory;
 import java.net.InetAddress;

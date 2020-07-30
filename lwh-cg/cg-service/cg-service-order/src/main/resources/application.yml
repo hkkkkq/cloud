@@ -1,5 +1,5 @@
 server:
-  port: 18090
+  port: 18088
 spring:
   application:
     name: order
@@ -14,9 +14,10 @@ spring:
     password: tarena
   main:
     allow-bean-definition-overriding: true
-  rabbitmq:
-    host: 192.168.1.8
-    port: 5672
+# MQ 配置
+#  rabbitmq:
+#    host: 192.168.1.8
+#    port: 5672
 
 eureka:
   client:

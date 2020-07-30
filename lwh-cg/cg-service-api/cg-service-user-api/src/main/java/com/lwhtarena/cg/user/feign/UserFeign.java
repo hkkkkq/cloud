@@ -1,6 +1,6 @@
 package com.lwhtarena.cg.user.feign;
 
-import com.lwhtarena.cg.entity.Result;
+import com.lwhtarena.cg.vo.Result;
 import com.lwhtarena.cg.user.pojo.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author liwh
  * @Title: UserFeign
  * @Package com.lwhtarena.cg.feign
- * @Description:
+ * @Description: user微服务
  * @Version 1.0.0
  * @date 2020/7/16 18:54
  */

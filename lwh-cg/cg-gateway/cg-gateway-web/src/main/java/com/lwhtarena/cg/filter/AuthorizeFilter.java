@@ -57,8 +57,11 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
         //4.1 从头header中获取令牌数据（获取头文件中的令牌）
         String token = request.getHeaders().getFirst(AUTHORIZE_TOKEN);
 
+        /**boolean true:令牌在头部文件中，false -> 表示不在头部文件中**/
+//        boolean hasToken =true;
+
         if(StringUtils.isEmpty(token)){
-            //4.2 从cookie中中获取令牌数据
+            /**4.2 从cookie中中获取令牌数据**/
             HttpCookie first = request.getCookies().getFirst(AUTHORIZE_TOKEN);
             if(first!=null){
                 token=first.getValue();//就是令牌的数据
@@ -66,12 +69,12 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
         }
 
         if(StringUtils.isEmpty(token)){
-            //4.3 从请求参数中获取令牌数据
+            /**4.3 从请求参数中获取令牌数据**/
             token= request.getQueryParams().getFirst(AUTHORIZE_TOKEN);
         }
 
         if(StringUtils.isEmpty(token)){
-            //4.4. 如果没有数据    没有登录,要重定向到登录到页面
+            /**4.4. 如果没有数据    没有登录,要重定向到登录到页面**/
             response.setStatusCode(HttpStatus.SEE_OTHER);//303 302
             //location 指定的就是路径
             response.getHeaders().set("Location",loginURL+"?From="+request.getURI().toString());
@@ -100,12 +103,17 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
 //            }
 //        }
 
+        /**判断当前令牌是否有bearer前缀，如果没有，则添加前缀bearer**/
+        if(!token.startsWith("bearer ") && !token.startsWith("Bearer ")){
+            token ="bearer "+token;
+        }
 
         /**
          * 添加头信息 传递给 各个微服务()
          * 将令牌封装到header-- ）Oauth2.0
          */
-        request.mutate().header(AUTHORIZE_TOKEN,"Bearer "+ token);
+        request.mutate().header(AUTHORIZE_TOKEN,token);
+
 
         return chain.filter(exchange);
     }

@@ -1,6 +1,6 @@
 package com.lwhtarena.cg.item.feign;
 
-import com.lwhtarena.cg.entity.Result;
+import com.lwhtarena.cg.vo.Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -14,7 +14,7 @@ import com.lwhtarena.cg.annotation.dml.UpdateListenPoint;
 import com.lwhtarena.cg.content.feign.ContentFeign;
 import com.lwhtarena.cg.content.pojo.Content;
 import com.lwhtarena.cg.core.CanalMsg;
-import com.lwhtarena.cg.entity.Result;
+import com.lwhtarena.cg.vo.Result;
 import com.lwhtarena.cg.item.feign.PageFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;

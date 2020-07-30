@@ -5,8 +5,8 @@ import com.lwhtarena.cg.service.ProvincesService;
 import com.lwhtarena.cg.user.pojo.Provinces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.lwhtarena.cg.entity.Result;
-import com.lwhtarena.cg.entity.StatusCode;
+import com.lwhtarena.cg.vo.Result;
+import com.lwhtarena.cg.constants.StatusCode;
 import java.util.List;
 
 /****

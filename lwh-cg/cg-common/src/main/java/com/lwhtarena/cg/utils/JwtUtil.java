@@ -1,4 +1,4 @@
-package com.lwhtarena.cg.entity;
+package com.lwhtarena.cg.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;

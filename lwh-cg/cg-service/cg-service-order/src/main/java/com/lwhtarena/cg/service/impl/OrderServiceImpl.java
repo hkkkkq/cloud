@@ -4,7 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lwhtarena.cg.dao.OrderItemMapper;
 import com.lwhtarena.cg.dao.OrderMapper;
-import com.lwhtarena.cg.entity.IdWorker;
+import com.lwhtarena.cg.utils.IdWorker;
 import com.lwhtarena.cg.goods.feign.GoodsFeign;
 import com.lwhtarena.cg.order.pojo.Order;
 import com.lwhtarena.cg.order.pojo.OrderItem;

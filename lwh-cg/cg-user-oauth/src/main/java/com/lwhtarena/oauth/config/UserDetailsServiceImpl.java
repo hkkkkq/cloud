@@ -1,5 +1,6 @@
 package com.lwhtarena.oauth.config;
 
+import com.lwhtarena.cg.vo.Result;
 import com.lwhtarena.cg.user.feign.UserFeign;
 import com.lwhtarena.oauth.util.UserJwt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        /**----========================= 客户端信息认证 start =====================---**/
+        /**----========================= 客户端信息认证 start 授权码认证 =====================---**/
         //取出身份，如果身份为空说明没有认证
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         //没有认证统一采用httpbasic认证，httpbasic中存储了client_id和client_secret，开始认证client_id和client_secret
@@ -66,14 +67,24 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
         /**----========================= 客户端信息认证 end =====================---**/
 
-        /**----========================= 用户信息认证 start =====================---**/
+        /**----========================= 用户信息认证 start 密码认证 =====================---**/
         if (StringUtils.isEmpty(username)) {
             return null;
         }
 
-        //根据用户名查询用户信息
+        //根据用户名查询用户信息 --硬编码
         //String pwd = new BCryptPasswordEncoder().encode("szitheima");
-        String pwd = userFeign.findByUsername(username).getData().getPassword();
+
+        /**
+         * 从数据库加载查询用户信息
+         */
+        Result<com.lwhtarena.cg.user.pojo.User> userResult = userFeign.findByUsername(username);
+        if(userResult==null || userResult.getData()==null){
+            return null;
+        }
+        String pwd = userResult.getData().getPassword();
+
+
         //创建User对象  授予权限.GOODS_LIST  SECKILL_LIST 此时是硬编码
         String permissions = "goods_list,seckill_list"; /**可以设计角色权限表，从数据库加载出来**/
 

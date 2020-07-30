@@ -1,6 +1,6 @@
 package com.lwhtarena.cg.controller;
-import com.lwhtarena.cg.entity.Result;
-import com.lwhtarena.cg.entity.StatusCode;
+import com.lwhtarena.cg.vo.Result;
+import com.lwhtarena.cg.constants.StatusCode;
 import com.lwhtarena.cg.goods.pojo.UndoLog;
 import com.lwhtarena.cg.service.UndoLogService;
 import com.github.pagehelper.PageInfo;

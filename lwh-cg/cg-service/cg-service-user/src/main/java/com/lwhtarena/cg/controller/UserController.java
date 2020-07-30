@@ -1,10 +1,13 @@
 package com.lwhtarena.cg.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.lwhtarena.cg.entity.*;
 import com.github.pagehelper.PageInfo;
 import com.lwhtarena.cg.service.UserService;
 import com.lwhtarena.cg.user.pojo.User;
+import com.lwhtarena.cg.utils.BCrypt;
+import com.lwhtarena.cg.utils.JwtUtil;
+import com.lwhtarena.cg.vo.Result;
+import com.lwhtarena.cg.constants.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;

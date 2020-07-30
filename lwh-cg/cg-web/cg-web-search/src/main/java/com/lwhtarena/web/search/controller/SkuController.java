@@ -1,6 +1,6 @@
 package com.lwhtarena.web.search.controller;
 
-import com.lwhtarena.cg.entity.Page;
+import com.lwhtarena.cg.vo.Page;
 import com.lwhtarena.cg.search.feign.SkuFeign;
 import com.lwhtarena.cg.search.pojo.SkuInfo;
 import org.springframework.beans.factory.annotation.Autowired;

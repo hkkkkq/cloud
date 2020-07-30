@@ -22,12 +22,11 @@ import java.util.stream.Collectors;
  * 配置每个系统的http请求路径安全控制策略以及读取公钥信息识别令牌
  */
 @Configuration
-// 开启 资源服务器(标识他是一个oauth2中的资源服务器)
-@EnableResourceServer
-@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)//激活方法上的PreAuthorize注解
+@EnableResourceServer  //开启 资源服务器(标识他是一个oauth2中的资源服务器)  --令牌校验
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)//激活方法上的PreAuthorize注解 --全局方法校验
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
-    //公钥
+    /**公钥**/
     private static final String PUBLIC_KEY = "public.key";
 
     /***
@@ -68,6 +67,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     }
 
     /***
+     * spring security 的配置
      * Http安全配置，对每个到达系统的http请求链接进行校验
      * @param http
      * @throws Exception

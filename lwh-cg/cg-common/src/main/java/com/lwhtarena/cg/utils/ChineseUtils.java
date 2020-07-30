@@ -1,7 +1,6 @@
-package com.lwhtarena.cg.entity;
+package com.lwhtarena.cg.utils;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Date;
 import java.util.Random;
 
 /***

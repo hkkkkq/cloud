@@ -85,6 +85,5 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .anyRequest()
                 .authenticated();       //其他请求都需要经过验证
-
     }
 }
