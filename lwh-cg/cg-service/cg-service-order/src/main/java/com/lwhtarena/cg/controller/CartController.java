@@ -1,16 +1,14 @@
 package com.lwhtarena.cg.controller;
 
-import com.lwhtarena.cg.vo.Result;
 import com.lwhtarena.cg.constants.StatusCode;
-import com.lwhtarena.cg.order.pojo.OrderItem;
 import com.lwhtarena.cg.service.CartService;
 import com.lwhtarena.cg.utils.TokenDecode;
+import com.lwhtarena.cg.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,9 +26,6 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
-    @Autowired
-    private TokenDecode tokenDecode;
-
     /**
      * 添加购物车
      *
@@ -44,7 +39,7 @@ public class CartController {
 //        String username = "changgou";
 
         /**用户的令牌信息-》解析令牌信息-》登录认证名 **/
-        Map<String, String> userInfo = tokenDecode.getUserInfo();
+        Map<String, String> userInfo = TokenDecode.getUserInfo();
         String username = userInfo.get("username");
 
         System.out.println("哇塞::用户名:"+username);
@@ -58,13 +53,13 @@ public class CartController {
      * 购物车列表
      * @return
      */
-    @RequestMapping("/list")
-    public Result<List<OrderItem>> list() {
-        Map<String, String> userInfo = tokenDecode.getUserInfo();
-        String username = userInfo.get("username");
-        System.out.println("哇塞::用户名:"+username);
-        List<OrderItem> orderItemList = cartService.list(username);
-        return new Result<List<OrderItem>>(true, StatusCode.OK, "列表查询成功", orderItemList);
+    @GetMapping("/list")
+    public Map list() {
+        //动态获取当前人信息,暂时静态
+        //String username = "itcast";
+        String username = TokenDecode.getUserInfo().get("username");
+        Map map = cartService.list(username);
+        return map;
     }
 
 

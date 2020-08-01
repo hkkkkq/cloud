@@ -4,7 +4,6 @@ import com.lwhtarena.cg.vo.Result;
 import com.lwhtarena.cg.goods.pojo.Category;
 import com.lwhtarena.cg.goods.pojo.Sku;
 import com.lwhtarena.cg.goods.pojo.Spu;
-import com.lwhtarena.cg.order.pojo.OrderItem;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +11,7 @@ import java.util.List;
 
 /**
  * @author liwh
- * @Title: SkuFeign
+ * @Title: GoodsFeign
  * @Package com.lwhtarena.cg.goods.feign
  * @Description:
  * @Version 1.0.0
@@ -46,8 +45,13 @@ public interface GoodsFeign {
     @GetMapping("/sku/{id}")
     public Result<Sku> findById(@PathVariable(name="id") Long id);
 
-    @PostMapping(value = "/decr/count")
-    public Result decrCount(@RequestBody OrderItem orderItem);
+    /**
+     * 库存递减
+     * @param username
+     * @return
+     */
+    @PostMapping(value = "/sku/decr/count")
+    public Result decrCount(@RequestParam("username") String username);
 
 
     /**----====================== category ===========================----**/

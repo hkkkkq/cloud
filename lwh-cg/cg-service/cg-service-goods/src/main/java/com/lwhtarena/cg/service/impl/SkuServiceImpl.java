@@ -2,10 +2,12 @@ package com.lwhtarena.cg.service.impl;
 
 import com.lwhtarena.cg.dao.SkuMapper;
 import com.lwhtarena.cg.goods.pojo.Sku;
+import com.lwhtarena.cg.order.pojo.OrderItem;
 import com.lwhtarena.cg.service.SkuService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
@@ -23,6 +25,9 @@ public class SkuServiceImpl implements SkuService {
 
     @Resource
     private SkuMapper skuMapper;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
 
 
     /**
@@ -227,5 +232,25 @@ public class SkuServiceImpl implements SkuService {
         Sku sku = new Sku();
         sku.setStatus(status);
         return skuMapper.select(sku);
+    }
+
+    /**
+     * 减库存
+     * @param username
+     */
+    @Override
+    public void decrCount(String username) {
+        //1.获取购物车中的数据
+        List<OrderItem> orderItemList = redisTemplate.boundHashOps("cart_" + username).values();
+
+        //2.循环扣减库存并增加销量
+        for (OrderItem orderItem : orderItemList) {
+            /**采用sql的行级锁解决超卖问题**/
+            int count = skuMapper.decrCount(orderItem);
+            if (count <= 0){
+                /**库存不足，事务回滚**/
+                throw new RuntimeException("库存不足,请重试");
+            }
+        }
     }
 }

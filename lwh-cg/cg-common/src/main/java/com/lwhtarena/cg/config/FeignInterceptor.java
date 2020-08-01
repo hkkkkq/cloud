@@ -2,6 +2,7 @@ package com.lwhtarena.cg.config;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -19,6 +20,7 @@ import java.util.Objects;
  * @Version 1.0.0
  * @date 2020/7/29 09:36
  */
+@Component
 public class FeignInterceptor implements RequestInterceptor {
 
     /**

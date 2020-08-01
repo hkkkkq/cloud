@@ -177,6 +177,11 @@ public class AddressServiceImpl implements AddressService {
         return addressMapper.selectAll();
     }
 
+    /**
+     * 根据用户登录名查询收件人地址信息
+     * @param username
+     * @return
+     */
     @Override
     public List<Address> list(String username) {
         //select * from tb_address where usenrame =?

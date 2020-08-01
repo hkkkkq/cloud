@@ -24,7 +24,7 @@ spring:
           uri: lb://goods
           predicates:
 #            - Host=cg.liwhtarena.com
-            - Path=/api/goods/**
+            - Path=/api/album/**,/api/brand/**,/api/cache/**,/api/categoryBrand/**,/api/category/**,/api/para/**,/api/pref/**,/api/sku/**,/api/spec/**,/api/spu/**,/api/stockBack/**,/api/template/**
           filters:
             - StripPrefix=1
             ###### 限流

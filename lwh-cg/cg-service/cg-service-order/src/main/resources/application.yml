@@ -46,6 +46,7 @@ hystrix:
           thread:
             timeoutInMilliseconds: 10000
           strategy: SEMAPHORE
+  shareSecurityContext: true
 
 mq:
   pay:

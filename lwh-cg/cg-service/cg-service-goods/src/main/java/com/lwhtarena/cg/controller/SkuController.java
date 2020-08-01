@@ -7,7 +7,10 @@ import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.ResultSet;
 import java.util.List;
+import java.util.Map;
 
 /****
  * @Author:liwh
@@ -153,4 +156,16 @@ public class SkuController {
         List<Sku> list = skuService.findByStatus(status);
         return new Result<List<Sku>>(true,StatusCode.OK,"查询成功",list);
     }
+
+    /**
+     * 商品库存递减
+     * @param username
+     * @return
+     */
+    @PostMapping(value = "/decr/count")
+    public Result decrCount(@RequestParam("username") String username){
+        skuService.decrCount(username);
+        return new Result(true,StatusCode.OK,"库存扣减成功");
+    }
+
 }

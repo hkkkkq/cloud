@@ -4,6 +4,7 @@ package com.lwhtarena.cg.service;
 import com.lwhtarena.cg.order.pojo.OrderItem;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 描述
@@ -23,9 +24,10 @@ public interface CartService {
     void add(Long id, Integer num, String username);
 
     /**
+     * 查询购物车数据
      * 从redis中获取当前的用户的购物车的列表数据
      * @param username
      * @return
      */
-    List<OrderItem> list(String username);
+    Map list(String username);
 }

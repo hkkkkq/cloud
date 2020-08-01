@@ -49,10 +49,10 @@ public interface OrderService {
     void update(Order order);
 
     /***
-     * 新增Order
+     * 新增Order，添加订单
      * @param order
      */
-    Order add(Order order);
+    void add(Order order);
 
     /**
      * 根据ID查询Order

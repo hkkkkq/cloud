@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 描述
@@ -22,6 +24,8 @@ import java.util.List;
  */
 @Service
 public class CartServiceImpl implements CartService {
+
+    private static final String CART="Cart_";
 
     @Autowired
     private GoodsFeign goodsFeign;
@@ -40,7 +44,7 @@ public class CartServiceImpl implements CartService {
 
         if(num<=0){
             //删除掉原来的商品
-            redisTemplate.boundHashOps("Cart_" + username).delete(id);
+            redisTemplate.boundHashOps(CART + username).delete(id);
             return;
         }
 
@@ -59,15 +63,34 @@ public class CartServiceImpl implements CartService {
             OrderItem orderItem = createOrderItem(id, num, data, spu);
 
             /**4.数据添加到redis中  key:用户名 field:sku的ID  value:购物车数据(order_item)**/
-            redisTemplate.boundHashOps("Cart_" + username).put(id, orderItem);// hset key field value   hget key field
+            redisTemplate.boundHashOps(CART + username).put(id, orderItem);// hset key field value   hget key field
         }
 
     }
 
+    /**
+     * 查询购物车列表数据
+     * **/
     @Override
-    public List<OrderItem> list(String username) {
-        List<OrderItem> orderItemList = redisTemplate.boundHashOps("Cart_" + username).values();
-        return orderItemList;
+    public Map list(String username) {
+        Map map = new HashMap();
+
+        List<OrderItem> orderItemList = redisTemplate.boundHashOps(CART + username).values();
+        map.put("orderItemList",orderItemList);
+
+        //商品的总数量与总价格
+        Integer totalNum = 0;
+        Integer totalMoney = 0;
+
+        for (OrderItem orderItem : orderItemList) {
+            totalNum+=orderItem.getNum();
+            totalMoney+=orderItem.getMoney();
+        }
+
+        map.put("totalNum",totalNum);
+        map.put("totalMoney",totalMoney);
+
+        return map;
     }
 
     /**

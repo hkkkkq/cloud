@@ -70,4 +70,5 @@ public interface SkuService {
      */
     List<Sku> findByStatus(String status);
 
+    void decrCount(String useranem);
 }

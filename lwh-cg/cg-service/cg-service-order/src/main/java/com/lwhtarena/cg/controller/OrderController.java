@@ -24,10 +24,7 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
-
-    @Autowired
-    private TokenDecode tokenDecode;
-
+    
     /***
      * Order分页条件搜索实现
      * @param order
@@ -99,13 +96,14 @@ public class OrderController {
      * @param order
      * @return
      */
-    @PostMapping
+    @PostMapping("/add")
     public Result<Order> add(@RequestBody Order order) {
         //调用OrderService实现添加Order
-        order.setUsername(tokenDecode.getUserInfo().get("username"));
-        order.setUsername("hello");
-        Order orderResult = orderService.add(order);
-        return new Result(true, StatusCode.OK, "添加成功",orderResult);
+        //获取登录人名称
+        String username = TokenDecode.getUserInfo().get("username");
+        order.setUsername(username);
+        orderService.add(order);
+        return new Result(true,StatusCode.OK,"添加成功");
     }
 
     /***
@@ -130,8 +128,5 @@ public class OrderController {
         List<Order> list = orderService.findAll();
         return new Result<List<Order>>(true, StatusCode.OK, "查询成功", list);
     }
-
-
-
 
 }

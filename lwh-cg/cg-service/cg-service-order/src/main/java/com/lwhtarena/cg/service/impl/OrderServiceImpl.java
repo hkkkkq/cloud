@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lwhtarena.cg.dao.OrderItemMapper;
 import com.lwhtarena.cg.dao.OrderMapper;
+import com.lwhtarena.cg.service.CartService;
 import com.lwhtarena.cg.utils.IdWorker;
 import com.lwhtarena.cg.goods.feign.GoodsFeign;
 import com.lwhtarena.cg.order.pojo.Order;
@@ -17,8 +18,10 @@ import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /****
  * @Author:admin
@@ -232,6 +235,10 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private RedisTemplate redisTemplate;
 
+
+    @Autowired
+    private CartService cartService;
+
     @Autowired
     private GoodsFeign goodsFeign;
 
@@ -245,54 +252,41 @@ public class OrderServiceImpl implements OrderService {
      * @param order
      */
     @Override
-    public Order add(Order order) {
-        //1.添加订单表的数据
-        order.setId(idWorker.nextId() + "");
+    public void add(Order order) {
+        //1.获取购物车的相关数据(redis)
+        Map cartMap = cartService.list(order.getUsername());
+        List<OrderItem> orderItemList = (List<OrderItem>) cartMap.get("orderItemList");
 
-        List<OrderItem> values = redisTemplate.boundHashOps("Cart_" + order.getUsername()).values();
-
-        Integer totalNum = 0;//购买总数量
-        Integer totalMoney = 0;//购买的总金额
-        for (OrderItem orderItem : values) {
-            totalNum += orderItem.getNum();//购买的数量
-            totalMoney += orderItem.getMoney();//金额
-            //2.添加订单选项表的数据
-            orderItem.setId(idWorker.nextId() + "");//订单选项的iD
-            orderItem.setOrderId(order.getId());//订单的iD
-            orderItem.setIsReturn("0");//未退货
-            orderItemMapper.insertSelective(orderItem);
-            //3.减少库存  调用goods 微服务的 feign 减少库存
-            goodsFeign.decrCount(orderItem);
-        }
-
-        order.setTotalNum(totalNum);//设置总数量
-
-        order.setTotalMoney(totalMoney);//设置总金额
-
-        order.setPayMoney(totalMoney);//设置实付金额
-
+        //2.统计计算:总金额,总数量
+        //3.填充订单数据并保存到tb_order
+        order.setTotalNum((Integer) cartMap.get("totalNum"));
+        order.setTotalMoney((Integer) cartMap.get("totalMoney"));
+        order.setPayMoney((Integer) cartMap.get("totalMoney"));
         order.setCreateTime(new Date());
-        order.setUpdateTime(order.getCreateTime());
-
-        order.setOrderStatus("0");//0:未完成
-        order.setPayStatus("0");//未支付
-        order.setConsignStatus("0");//未发货
-        order.setIsDelete("0");//未删除
+        order.setUpdateTime(new Date());
+        order.setBuyerRate("0"); // 0:未评价  1:已评价
+        order.setSourceType("1"); //1:WEB
+        order.setOrderStatus("0"); //0:未完成 1:已完成 2:已退货
+        order.setPayStatus("0"); //0:未支付 1:已支付
+        order.setConsignStatus("0"); //0:未发货 1:已发货
+        String orderId = idWorker.nextId()+"";
+        order.setId(orderId);
         orderMapper.insertSelective(order);
 
-        //4.增加积分  调用用户微服务的userfeign 增加积分
+        //4.填充订单项数据并保存到tb_order_item
+        for (OrderItem orderItem : orderItemList) {
+            orderItem.setId(idWorker.nextId()+"");
+            orderItem.setIsReturn("0"); //0:未退货 1:已退货
+            orderItem.setOrderId(orderId);
+            orderItemMapper.insertSelective(orderItem);
+        }
 
-        userFeign.addPoints(10, order.getUsername());
+        //扣减库存并增加销量
+        goodsFeign.decrCount(order.getUsername());
 
+        //5.删除购物车数据(redis)
+        redisTemplate.delete("Cart_"+order.getUsername());
 
-        //5.清空当前的用户的redis中的购物车
-
-        redisTemplate.delete("Cart_" + order.getUsername());
-
-
-        //调用定时任务
-
-        return order;
     }
 
     /**

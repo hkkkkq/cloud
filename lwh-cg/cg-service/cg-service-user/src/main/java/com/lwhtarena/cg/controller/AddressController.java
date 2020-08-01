@@ -141,7 +141,5 @@ public class AddressController {
 
         //返回
         return new Result<List<Address>>(true, StatusCode.OK, "地址列表查询成功", addressList);
-
-
     }
 }
