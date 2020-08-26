@@ -102,8 +102,9 @@ public class OrderController {
         //获取登录人名称
         String username = TokenDecode.getUserInfo().get("username");
         order.setUsername(username);
-        orderService.add(order);
-        return new Result(true,StatusCode.OK,"添加成功");
+        /**将订单对象返回，因为页面需要获取订单的金额和订单号用于创建二维码**/
+        order =orderService.add(order);
+        return new Result(true,StatusCode.OK,"添加成功",order);
     }
 
     /***

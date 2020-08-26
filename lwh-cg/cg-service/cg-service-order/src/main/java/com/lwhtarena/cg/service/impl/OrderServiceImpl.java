@@ -242,17 +242,13 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private GoodsFeign goodsFeign;
 
-
-    @Autowired
-    private UserFeign userFeign;
-
     /**
      * 增加Order
      *
      * @param order
      */
     @Override
-    public void add(Order order) {
+    public Order add(Order order) {
         //1.获取购物车的相关数据(redis)
         Map cartMap = cartService.list(order.getUsername());
         List<OrderItem> orderItemList = (List<OrderItem>) cartMap.get("orderItemList");
@@ -284,9 +280,19 @@ public class OrderServiceImpl implements OrderService {
         //扣减库存并增加销量
         goodsFeign.decrCount(order.getUsername());
 
+        /**线上支付，记录订单**/
+        if(order.getPayType().equalsIgnoreCase("1")){
+            /**将订单信息存放到Redis中，减少对数据库的访问
+             * 将支付记录存入到Reids namespace  key  value
+             * **/
+            redisTemplate.boundHashOps("Order").put(order.getId(),order);
+        }
+
+
         //5.删除购物车数据(redis)
         redisTemplate.delete("Cart_"+order.getUsername());
 
+        return order;
     }
 
     /**
@@ -310,19 +316,51 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.selectAll();
     }
 
+    /**
+     *
+     * @param out_trade_no
+     * @param transaction_id 微信支付的交易流水号
+     * 订单支付成功后，需要修改订单状态并持久化到数据库，修改订单的同时，需要
+     * 将Redis中的订单删除，所以修改订单状态需要将订单日志也传过来
+     */
     @Override
     public void updateStatus(String out_trade_no, String transaction_id) {
         //1.根据id 获取订单的数据
         Order order = orderMapper.selectByPrimaryKey(out_trade_no);
-        //2.更新
+        //2.更新，时间也可以从微信接口返回过来，这里为了方便，我们就直接使用当前时间了
         order.setUpdateTime(new Date());
 
         //  支付的时间  从微信的参数中获取
         order.setPayTime(new Date());
         order.setOrderStatus("1");
         order.setPayStatus("1");
-        order.setTransactionId(transaction_id);
+        order.setTransactionId(transaction_id); //微信支付的交易流水号
+
         //3.更新到数据库
         orderMapper.updateByPrimaryKeySelective(order);
+
+        /**删除Redis中的订单记录**/
+        redisTemplate.boundHashOps("Order").delete(out_trade_no);
+    }
+
+    /**
+     * 如果用户订单支付失败了，或者支付超时了，我们需要删除用户订单，删除订单的同时需要回滚库存
+     * @param id
+     */
+    @Override
+    public void deleteOrder(String id) {
+        //改状态
+        Order order = (Order) redisTemplate.boundHashOps("Order").get(id);
+        order.setUpdateTime(new Date());
+        order.setPayStatus("2");    //支付失败
+        orderMapper.updateByPrimaryKeySelective(order);
+
+        //删除缓存
+        redisTemplate.boundHashOps("Order").delete(id);
+    }
+
+    @Override
+    public Integer closeOrder(String orderId) {
+        return orderMapper.closeOrder(orderId);
     }
 }

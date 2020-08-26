@@ -52,7 +52,7 @@ public interface OrderService {
      * 新增Order，添加订单
      * @param order
      */
-    void add(Order order);
+    Order add(Order order);
 
     /**
      * 根据ID查询Order
@@ -69,8 +69,19 @@ public interface OrderService {
 
     /**
      * 更新对应的订单的状态
-     * @param out_trade_no
-     * @param transaction_id
+     * @param out_trade_no 订单
+     * @param transaction_id 微信支付的交易流水号
+     * 订单支付成功后，需要修改订单状态并持久化到数据库，修改订单的同时，需要
+     * 将Redis中的订单删除，所以修改订单状态需要将订单日志也传过来
      */
     public void updateStatus(String out_trade_no,String transaction_id);
+
+    /***
+     * 如果用户订单支付失败了，或者支付超时了，我们需要删除用户订单，删除订单的同时需要回滚库存
+     * 删除订单操作
+     * @param id
+     */
+    void deleteOrder(String id);
+
+    Integer closeOrder(String orderId);
 }

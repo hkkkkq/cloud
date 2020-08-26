@@ -20,6 +20,7 @@
         <module>cg-service-search</module>
         <module>cg-service-user</module>
         <module>cg-service-order</module>
+        <module>cg-service-pay</module>
     </modules>
 
     <artifactId>cg-service</artifactId>

@@ -12,6 +12,11 @@ spring:
     host: 192.168.1.8
     port: 16379
     password: tarena
+  rabbitmq:
+    host: 192.168.1.8
+    port: 15672
+    username: admin
+    password: tarena
   main:
     allow-bean-definition-overriding: true
 # MQ 配置
