@@ -8,5 +8,6 @@ export function policy() {
         }).then(({ data }) => {
             resolve(data);
         })
+     console.warn("http",http)
     });
 }

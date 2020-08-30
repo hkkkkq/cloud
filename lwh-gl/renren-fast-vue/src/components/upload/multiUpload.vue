@@ -1,7 +1,8 @@
 <template>
   <div>
+    <!-- action="http://gulimall-hello.oss-cn-beijing.aliyuncs.com"-->
     <el-upload
-      action="http://gulimall-hello.oss-cn-beijing.aliyuncs.com"
+      action="/"
       :data="dataObj"
       :list-type="listType"
       :file-list="fileList"
@@ -21,7 +22,8 @@
   </div>
 </template>
 <script>
-import { policy } from "./policy";
+// import { policy } from "./policy";
+import { fdfs } from "./fdfs";
 import { getUUID } from '@/utils'
 export default {
   name: "multiUpload",
@@ -47,6 +49,7 @@ export default {
     return {
       dataObj: {
         policy: "",
+        fdfs: "",
         signature: "",
         key: "",
         ossaccessKeyId: "",
@@ -84,18 +87,22 @@ export default {
       this.dialogVisible = true;
       this.dialogImageUrl = file.url;
     },
+    /**使用fdfs**/
     beforeUpload(file) {
       let _self = this;
       return new Promise((resolve, reject) => {
-        policy()
+        fdfs()
           .then(response => {
-            console.log("这是什么${filename}");
-            _self.dataObj.policy = response.data.policy;
-            _self.dataObj.signature = response.data.signature;
-            _self.dataObj.ossaccessKeyId = response.data.accessid;
-            _self.dataObj.key = response.data.dir +getUUID()+"_${filename}";
-            _self.dataObj.dir = response.data.dir;
+            _self.dataObj.fdfs = response.data.fdfs;
             _self.dataObj.host = response.data.host;
+            _self.dataObj.policy = response.data.policy;
+            console.log("这是什么${filename}");
+            // _self.dataObj.policy = response.data.policy;
+            // _self.dataObj.signature = response.data.signature;
+            // _self.dataObj.ossaccessKeyId = response.data.accessid;
+            // _self.dataObj.key = response.data.dir +getUUID()+"_${filename}";
+            // _self.dataObj.dir = response.data.dir;
+            // _self.dataObj.host = response.data.host;
             resolve(true);
           })
           .catch(err => {
@@ -104,6 +111,27 @@ export default {
           });
       });
     },
+    // 使用OSS
+    // beforeUpload(file) {
+    //   let _self = this;
+    //   return new Promise((resolve, reject) => {
+    //     policy()
+    //       .then(response => {
+    //         console.log("这是什么${filename}");
+    //         _self.dataObj.policy = response.data.policy;
+    //         _self.dataObj.signature = response.data.signature;
+    //         _self.dataObj.ossaccessKeyId = response.data.accessid;
+    //         _self.dataObj.key = response.data.dir +getUUID()+"_${filename}";
+    //         _self.dataObj.dir = response.data.dir;
+    //         _self.dataObj.host = response.data.host;
+    //         resolve(true);
+    //       })
+    //       .catch(err => {
+    //         console.log("出错了...",err)
+    //         reject(false);
+    //       });
+    //   });
+    // },
     handleUploadSuccess(res, file) {
       this.fileList.push({
         name: file.name,
