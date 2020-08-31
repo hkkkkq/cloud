@@ -48,6 +48,42 @@ Lombok：@Data、@Slf4j
 2、配置当次请求允许跨域（开发期间使用）
   添加响应头
 
+## 前端vue中使用pubsub进行兄弟之间传值
+通过npm（npm install pubsub-js）安装；
+
+**导入**
+```js
+import PubSub from “pubsub-js”
+```
+
+- 全新的 KaTeX数学公式 语法；
+- 增加了支持甘特图的mermaid语法1 功能；
+- 增加了 多屏幕编辑 Markdown文章功能；
+- 增加了 焦点写作模式、预览模式、简洁写作模式、左右区域同步滚轮设置 等功能，功能按钮位于编辑区域与预览区域中间；
+- 增加了 检查列表 功能。
+
+### 1、a组件传值给b组件
+```js
+//a组件
+PubSub.publish("search", name);
+
+//b组件
+PubSub.subscribe("search", (msg, name) => {
+ 
+  const url = `https://api.github.com/search/users?q=${name}`
+  axios.get(url).then(response => {
+    const result = response.data;
+    const users = result.items.map(item => ({
+      url: item.html_url,
+      avatar_url: item.avatar_url,
+      name: item.login
+    }));
+  
+  });
+});
+```
+
+
 
 
 
