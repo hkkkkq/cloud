@@ -50,6 +50,6 @@ public class AttrGroupEntity implements Serializable {
 	 * 数据库不存在该字段
 	 */
 	@TableField(exist = false)
-	private Long[] categoryPath;
+	private Long[] catelogPath;
 
 }

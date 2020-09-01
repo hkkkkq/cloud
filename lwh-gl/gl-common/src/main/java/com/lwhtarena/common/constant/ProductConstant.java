@@ -1,7 +1,5 @@
 package com.lwhtarena.common.constant;
 
-import lombok.Data;
-
 public class ProductConstant {
 
 
