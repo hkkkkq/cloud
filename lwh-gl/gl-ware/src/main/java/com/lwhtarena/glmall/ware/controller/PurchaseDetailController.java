@@ -38,7 +38,6 @@ public class PurchaseDetailController {
     //@RequiresPermissions("ware:purchasedetail:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = purchaseDetailService.queryPage(params);
-
         return R.ok().put("page", page);
     }
 

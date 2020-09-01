@@ -3,7 +3,6 @@ package com.lwhtarena.glmall.product.controller;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
 import com.lwhtarena.glmall.product.entity.AttrEntity;
 import com.lwhtarena.glmall.product.service.AttrAttrgroupRelationService;
 import com.lwhtarena.glmall.product.service.AttrService;
@@ -12,7 +11,6 @@ import com.lwhtarena.glmall.product.vo.AttrGroupRelationVo;
 import com.lwhtarena.glmall.product.vo.AttrGroupWithAttrsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import com.lwhtarena.glmall.product.entity.AttrGroupEntity;
 import com.lwhtarena.glmall.product.service.AttrGroupService;
 import com.lwhtarena.common.utils.PageUtils;
@@ -63,6 +61,7 @@ public class AttrGroupController {
     ///product/attrgroup/{attrgroupId}/attr/relation
     @GetMapping("/{attrgroupId}/attr/relation")
     public R attrRelation(@PathVariable("attrgroupId") Long attrgroupId){
+        /**根据分组id查找关联的所有基本属性**/
         List<AttrEntity> entities =  attrService.getRelationAttr(attrgroupId);
         return R.ok().put("data",entities);
     }
