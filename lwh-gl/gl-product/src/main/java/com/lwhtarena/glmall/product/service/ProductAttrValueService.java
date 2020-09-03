@@ -20,8 +20,13 @@ public interface ProductAttrValueService extends IService<ProductAttrValueEntity
 
     void saveProductAttr(List<ProductAttrValueEntity> collect);
 
-    List<ProductAttrValueEntity> baseAttrlistforspu(Long spuId);
-
+    List<ProductAttrValueEntity> baseAttrListforspu(Long spuId);
+    /**
+     *
+     * @param spuId
+     * @param entities
+     */
     void updateSpuAttr(Long spuId, List<ProductAttrValueEntity> entities);
+
 }
 

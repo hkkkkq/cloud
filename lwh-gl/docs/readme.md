@@ -37,9 +37,9 @@ SpringBoot2.0、 SpringCloud、Mybatis-Plus、Vue组件化、阿里云对象存�
 Vagrant、Linux、Docker、Mysql、Redis、逆向工程&人人开源
 
 ### 4、开发规范
-数据校验JSR303、全局异常处理、全局统一返回、全局跨域处理
-枚举状态、业务状态码、VO与TO与PO划分、逻辑删除
-Lombok：@Data、@Slf4j
+- 数据校验JSR303、全局异常处理、全局统一返回、全局跨域处理
+- 枚举状态、业务状态码、VO与TO与PO划分、逻辑删除
+- Lombok：@Data、@Slf4j
 
 
 ## 解决跨域问题

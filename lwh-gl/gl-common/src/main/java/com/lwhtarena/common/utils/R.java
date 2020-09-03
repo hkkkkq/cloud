@@ -1,13 +1,7 @@
-/**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
- *
- * https://www.renren.io
- *
- * 版权所有，侵权必究！
- */
-
 package com.lwhtarena.common.utils;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import org.apache.http.HttpStatus;
 
 import java.util.HashMap;
@@ -66,4 +60,24 @@ public class R extends HashMap<String, Object> {
 		return (Integer) this.get("code");
 	}
 
+	public R setData(Object data) {
+		put("data",data);
+		return this;
+	}
+
+	/**利用fastjson进行反序列化**/
+	public <T> T getData(TypeReference<T> typeReference) {
+		Object data = get("data");	//默认是map
+		String jsonString = JSON.toJSONString(data);
+		T t = JSON.parseObject(jsonString, typeReference);
+		return t;
+	}
+
+	/**利用fastjson进行反序列化**/
+	public <T> T getData(String key,TypeReference<T> typeReference) {
+		Object data = get(key);	//默认是map
+		String jsonString = JSON.toJSONString(data);
+		T t = JSON.parseObject(jsonString, typeReference);
+		return t;
+	}
 }

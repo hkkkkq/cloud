@@ -41,6 +41,7 @@
         <module>gl-ware</module>
         <module>renren-fast</module>
         <module>renren-generator</module>
+        <module>gl-search</module>
     </modules>
 
     <dependencyManagement>
