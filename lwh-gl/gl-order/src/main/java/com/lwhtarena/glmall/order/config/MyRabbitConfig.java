@@ -1,11 +1,10 @@
 package com.lwhtarena.glmall.order.config;
 
-import com.rabbitmq.client.ConnectionFactory;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
 
@@ -49,7 +48,7 @@ public class MyRabbitConfig {
      *      2、设置确认回调ReturnCallback
      *
      * 3、消费端确认(保证每个消息都被正确消费，此时才可以broker删除这个消息)
-     *
+     *      1、默认是自动确认的，只要消息接收到，客户端会自动确认，服务端就会移除这个消息
      */
     // @PostConstruct  //MyRabbitConfig对象创建完成以后，执行这个方法
     public void initRabbitTemplate() {
