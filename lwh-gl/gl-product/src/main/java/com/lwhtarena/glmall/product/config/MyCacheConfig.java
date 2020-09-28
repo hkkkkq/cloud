@@ -20,14 +20,19 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  */
 @EnableConfigurationProperties(CacheProperties.class)
 @Configuration
-@EnableCaching
+@EnableCaching //开启缓存
 public class MyCacheConfig {
 
     // @Autowired
     // public CacheProperties cacheProperties;
 
     /**
-     * 配置文件的配置没有用上
+     * 配置文件的配置没有用上：
+     * 1、原来和配置文件绑定的配置类是这样的
+     *      @ConfigurationProperties(prefix = "spring.cache")
+     *      public class CacheProperties {...}
+     * 2、要让它生效
+     *      @EnableConfigurationProperties(CacheProperties.class)
      * @return
      */
     @Bean

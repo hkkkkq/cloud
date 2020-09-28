@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.lwhtarena</groupId>
+    <artifactId>lwh-red</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <description>
+        企业年会的红包雨
+        重点技术：并发性、库存控制、投放策略、边界控制、活动自由配置、中奖策略
+    </description>
+
+    <modules>
+        <module>lwh-red-frontend</module>
+        <module>lwh-red-backend</module>
+    </modules>
+
+
+</project>

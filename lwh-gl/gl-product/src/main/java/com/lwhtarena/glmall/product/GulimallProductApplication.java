@@ -3,6 +3,7 @@ package com.lwhtarena.glmall.product;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
@@ -83,8 +84,44 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  *             <version>3.12.0</version>
  *         </dependency>
  *    2)、配置redisson
+ *      MyRedissonConfig给容器中配置一个RedissonClient实例即可
+ *    3)、使用
+ *      参照文档做
+ *
+ *  8、整合Spring cache 简化缓存开发
+ *    1)、引入依赖`spring-boot-starter-cache、spring-boot-starter-data-redis`
+ *         <dependency>
+ *             <groupId>org.springframework.boot</groupId>
+ *             <artifactId>spring-boot-starter-cache</artifactId>
+ *         </dependency>
+ *         <dependency>
+ *             <groupId>org.springframework.boot</groupId>
+ *             <artifactId>spring-boot-starter-data-redis</artifactId>
+ *         </dependency>
+ *    2)、写配置
+ *      （1）自动配置了哪些？
+ *          CacheAutoConfiguration会导入RedisAutoConfiguration；
+ *          自动配好了缓存管理器RedisCacheManager
+ *      （2）配置使用redis作为缓存
+ *    3)、测试使用缓存
+ *     @Cacheable：触发将数据保存到缓存的操作
+ *     @CacheEvict：触发将数据从缓存删除的操作
+ *     @CachePut：不影响方法执行更新缓存
+ *     @Caching：组合以上多个操作
+ *     @CacheConfig：在类级别共享缓存的相同配置
+ *
+ *      （1）开启缓存功能，@EnableCaching
+ *          在主程序入口`@EnableCaching`
+ *      （2）只需要使用注解就能完成缓存操作
+ *     4)、原理：
+ *      CacheAutoConfiguration->RedisCacheConfiguration->自动配置了RedisCacheManager
+ *     ->初始化所有的缓存->每个缓存决定使用什么配改置->如果redisCacheConfiguration有就用已有的，没有就用默认配置
+ *     ->想改缓存的配置，只需要给容器中放一个RedisCacheConfiguration即可->就会应用到当前RedisCacheManager管理的所有缓存分区中
+ *
+ *
  *
  */
+
 @EnableFeignClients(basePackages = "com.lwhtarena.glmall.product.feign")
 @EnableDiscoveryClient
 @MapperScan("com.lwhtarena.glmall.product.dao")

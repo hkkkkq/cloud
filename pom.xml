@@ -17,6 +17,8 @@
         <module>lwh-ms</module>
         <module>lwh-cg</module>
         <module>lwh-gl</module>
+        <module>lwh-c2c</module>
+        <module>lwh-red</module>
     </modules>
     <packaging>pom</packaging>
     <description>

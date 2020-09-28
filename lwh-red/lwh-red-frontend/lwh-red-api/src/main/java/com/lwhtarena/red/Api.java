@@ -1,0 +1,47 @@
+package com.lwhtarena.red;
+
+import com.github.pagehelper.PageHelper;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.context.annotation.Bean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import java.util.Properties;
+
+@SpringBootApplication
+@EnableDiscoveryClient
+@EnableCircuitBreaker
+@EnableTransactionManagement
+@MapperScan("com.lwhtarena.red.commons.db.mapper")
+@EnableCaching
+public class Api {
+
+    public static void main(String[] args) {
+        new SpringApplicationBuilder(Api.class).run(args);
+    }
+
+
+    /**
+     * 配置mybatis的分页插件pageHelper
+     * @return
+     */
+    @Bean
+    public PageHelper pageHelper(){
+        PageHelper pageHelper = new PageHelper();
+        Properties properties = new Properties();
+        properties.setProperty("offsetAsPageNum","true");
+        properties.setProperty("rowBoundsWithCount","true");
+        properties.setProperty("reasonable","true");
+        /**配置mysql数据库的方言**/
+        properties.setProperty("dialect","mysql");
+        pageHelper.setProperties(properties);
+        return pageHelper;
+    }
+
+
+}
