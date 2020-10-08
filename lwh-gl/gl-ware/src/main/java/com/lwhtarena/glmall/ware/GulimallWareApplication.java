@@ -1,6 +1,7 @@
 package com.lwhtarena.glmall.ware;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @Version 1.0.0
  * @date 2020/7/25 14:18
  */
+@EnableRabbit //开启mq的监听
 @EnableTransactionManagement
 @MapperScan("com.lwhtarena.glmall.ware.dao")
 @EnableFeignClients

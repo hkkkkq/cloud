@@ -42,6 +42,7 @@
         <module>renren-fast</module>
         <module>renren-generator</module>
         <module>gl-search</module>
+        <module>gl-auth-server</module>
     </modules>
 
     <dependencyManagement>
