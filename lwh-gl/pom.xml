@@ -43,6 +43,8 @@
         <module>renren-generator</module>
         <module>gl-search</module>
         <module>gl-auth-server</module>
+        <module>gl-cart</module>
+        <module>gl-seckill</module>
     </modules>
 
     <dependencyManagement>
