@@ -3,6 +3,7 @@ package com.lwhtarena.glmall.order.service.impl;
 import com.lwhtarena.glmall.order.entity.OrderReturnReasonEntity;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -34,7 +35,7 @@ public class OrderItemServiceImpl extends ServiceImpl<OrderItemDao, OrderItemEnt
      * queues：声明需要监听的队列
      * channel：当前传输数据的通道
      */
-    //@RabbitListener(queues = {"hello-java-queue"})
+    @RabbitListener(queues = {"hello-java-queue"})
     public void revieveMessage(Message message,
                                OrderReturnReasonEntity content) {
         //拿到主体内容

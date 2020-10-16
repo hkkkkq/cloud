@@ -7,8 +7,22 @@ spring:
     password: root
     url: jdbc:mysql://192.168.1.15:3306/gulimall_oms
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+  rabbitmq:
+    host: 192.168.1.15
+    port: 5672
+    virtual-host: glmall
+
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
     db-config:
       id-type: auto
+
+seata:
+  application-id: glmall-order
+  tx-service-group: glmall-order_tx_group
+  service:
+    vgroup-mapping:
+      glmall-order_tx_group: default
+
