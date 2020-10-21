@@ -91,6 +91,7 @@
             <artifactId>spring-session-data-redis</artifactId>
         </dependency>
 
+        <!--暴露所有资源信息-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>

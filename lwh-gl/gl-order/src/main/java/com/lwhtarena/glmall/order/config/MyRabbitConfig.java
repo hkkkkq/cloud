@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
 
+import javax.annotation.PostConstruct;
+
 
 /**
  * @author liwh
@@ -48,9 +50,19 @@ public class MyRabbitConfig {
      *      2、设置确认回调ReturnCallback
      *
      * 3、消费端确认(保证每个消息都被正确消费，此时才可以broker删除这个消息)
+     *    spring.rabbitmq.template.listener.simple.acknowledge-mode=manual #手动签收消息
      *      1、默认是自动确认的，只要消息接收到，客户端会自动确认，服务端就会移除这个消息
+     *        问题：
+     *          我们收到很多消息，自动回复给服务器ack，只有一个消息处理成功，宕机了。发生消息丢失。
+     *          消费者手动确认模式。只要我们没有明确告诉MQ，货物被签收。没有ack，消息就一直是unchecked状态。
+     *              即使Consumer宕机,消息不丢失，会重新变为Ready，下一次有新的Consumer连接进来就发送给他
+     *
+     *      2、如何签收
+     *          channel.basicAck(deliveryTag,false);  //签收;业务成功完成就应该签收
+     *          channel.basicNack(deliveryTag,false,true); //拒签；业务失败，拒签
+     *
      */
-    // @PostConstruct  //MyRabbitConfig对象创建完成以后，执行这个方法
+//    @PostConstruct  /**MyRabbitConfig对象创建完成以后，执行这个方法**/
     public void initRabbitTemplate() {
 
         /**

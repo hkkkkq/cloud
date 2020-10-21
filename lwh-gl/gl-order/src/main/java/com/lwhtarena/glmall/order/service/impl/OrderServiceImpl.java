@@ -23,6 +23,7 @@ import com.lwhtarena.glmall.order.service.PaymentInfoService;
 import com.lwhtarena.glmall.order.to.OrderCreateTo;
 import com.lwhtarena.glmall.order.to.SpuInfoVo;
 import com.lwhtarena.glmall.order.vo.*;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.BeanUtils;
@@ -177,13 +178,18 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
     }
 
     /**
+     * 本地事务，在分布式系统，只能控制自己的回滚，控制不了其他服务的回滚
+     * 分布式事务：最大原因。网络问题+分布式机器
+     * （isolation =Isolation.REPEATABLE_READ）
+     * REQUIRED、REQUIRES_NEW
+     *
      * 提交订单
      * @param vo
      * @return
      */
     // @Transactional(isolation = Isolation.READ_COMMITTED) 设置事务的隔离级别
     // @Transactional(propagation = Propagation.REQUIRED)   设置事务的传播级别
-    // @GlobalTransactional(rollbackFor = Exception.class)
+//    @GlobalTransactional(rollbackFor = Exception.class)
     @Transactional(rollbackFor = Exception.class)
     @Override
     public SubmitOrderResponseVo submitOrder(OrderSubmitVo vo) {

@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @date 2020/9/9 16:57
  */
 @Configuration
-public class OrderWebConfig implements WebMvcConfigurer {
+public class OrderWebConfiguration implements WebMvcConfigurer {
 
     @Autowired
     private LoginUserInterceptor loginUserInterceptor;

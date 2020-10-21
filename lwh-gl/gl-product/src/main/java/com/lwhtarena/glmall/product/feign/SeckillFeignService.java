@@ -1,6 +1,7 @@
 package com.lwhtarena.glmall.product.feign;
 
 import com.lwhtarena.common.utils.R;
+import com.lwhtarena.glmall.product.feign.fallback.SeckillFeignServiceFallBack;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @Version 1.0.0
  * @date 2020/9/3 21:46
  */
-//@FeignClient(value = "gulimall-seckill",fallback = SeckillFeignServiceFallBack.class)
+@FeignClient(value = "gulimall-seckill",fallback = SeckillFeignServiceFallBack.class)
 public interface SeckillFeignService {
 
     /**

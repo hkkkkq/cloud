@@ -5,15 +5,17 @@ import com.alibaba.fastjson.JSON;
 import com.lwhtarena.common.exception.BizCodeEnume;
 import com.lwhtarena.common.utils.R;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * @author liwh
  * @Title: GulimallSeckillSentinelConfig
  * @Package com.lwhtarena.glmall.seckill.config
- * @Description:
+ * @Description: 自定义 sentinel 流控返回的数据
  * @Version 1.0.0
  * @date 2020/10/9 04:32
  */
+@Configuration
 public class GulimallSeckillSentinelConfig {
     @Bean
     public BlockExceptionHandler sentinelBlockExceptionHandler() {

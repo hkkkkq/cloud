@@ -12,6 +12,16 @@ spring:
     nacos:
       discovery:
         server-addr: 192.168.1.15:8848
+    sentinel:
+      transport:
+        #配置sentinel dashboard地址
+        dashboard: localhost:8080
+
+#开启feign对sentinel的支持
+feign:
+  sentinel:
+    enabled: true
+
   application:
     name: gulimall-ware
 
@@ -27,4 +37,11 @@ mybatis-plus:
 
 logging:
   level:
-    com.atguigu: debug
+    com.lwhtarena.gl: debug
+
+#暴露所有端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

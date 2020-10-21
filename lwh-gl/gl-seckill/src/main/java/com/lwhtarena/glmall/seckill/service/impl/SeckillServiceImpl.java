@@ -174,6 +174,15 @@ public class SeckillServiceImpl implements SeckillService {
     @Override
     public List<SeckillSkuRedisTo> getCurrentSeckillSkus() {
 
+        /**
+         * 自定义受保护的资源
+         * 1、代码
+         *     try (Entry entry = SphU.entry("seckillSkus")) {
+         *              //业务逻辑
+         *      } catch(Exception e) {}
+         *
+         *  2、基于注解 @SentinelResource
+         */
         try (Entry entry = SphU.entry("seckillSkus")) {
             //1、确定当前属于哪个秒杀场次
             long currentTime = System.currentTimeMillis();
