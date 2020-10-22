@@ -4,7 +4,41 @@
 
 ![](./img/谷粒商城-微服务架构图.jpg)
 
-## 技术搭配分案
+## 一、环境
+
+Sentinel:
+    http://192.168.1.15:8858    管理平台帐号密码：sentinel|sentinel
+
+Zipkin服务器：
+    在浏览器访问：http://192.168.1.15:9411/zipkin/
+    docker run -d --restart always -p 9411:9411 --name zipkin openzipkin/zipkin 
+
+Nacos服务器: 
+    http://192.168.1.15:8848/nacos  管理平台帐号密码：nacos|nacos
+
+ElasticSearch: 
+    http://192.168.1.15:9200 
+    
+kibana:
+    http://192.168.1.15:5601/
+    
+Redis:
+    192.168.1.15:6379  密码：tarena
+    
+Mysql:
+    192.168.1.15:3306  帐号密码：root|root
+    
+RabbitMQ：
+    http://192.168.1.15:15672/   管理平台帐号密码：guest|guest
+    
+FastDFS：文件服务器
+    http://192.168.1.15:8080/group1/M00/00/00/wKgBD19KOhqAbCclAAFyMqlssRE301.jpg
+  
+  http.tracker_http_port=8080 //tracker的http通信协议的端口
+  tracker_server=192.168.1.15:22122 //22122 trackerserver的tcp 端口
+    
+
+## 二、技术搭配分案
 ```lua
 
 ├── SpringCloud Alibaba Nacos 注册中心（服务发现|注册）
@@ -26,7 +60,7 @@
 └── 完
 ```
 
-## 技术基础篇
+## 三、技术基础篇
 ### 1、分布式基础概念
 微服务、注册中心、配置中心、远程调用、Feign、网关
 
@@ -42,18 +76,18 @@ Vagrant、Linux、Docker、Mysql、Redis、逆向工程&人人开源
 - Lombok：@Data、@Slf4j
 
 
-## 解决跨域问题
+## 四、解决跨域问题
 1、使用nginx部署同一个域（不适合开发期间）
 
 2、配置当次请求允许跨域（开发期间使用）
   添加响应头
 
-## 前端vue中使用pubsub进行兄弟之间传值
+## 五、前端vue中使用pubsub进行兄弟之间传值
 通过npm（npm install pubsub-js）安装；
 
 **导入**
 ```js
-import PubSub from “pubsub-js”
+import PubSub from "pubsub-js"
 ```
 
 - 全新的 KaTeX数学公式 语法；

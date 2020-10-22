@@ -8,18 +8,28 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848
+        server-addr: 192.168.1.15:8848
 
     sentinel:
       transport:
         #配置sentinel dashboard地址
-        dashboard: localhost:8080
+        dashboard: 192.168.1.15:8858
         #默认8719端口，假如被占用会自动从8719开始依次+1扫描，直至找到未被占用的端口
         port: 8719
+##服务追踪
+  zipkin:
+    base-url: 192.168.1.15:9411
+    discovery-client-enabled: false
+    sender:
+      type: web
+  sleuth:
+    sampler:
+      probability: 1
 
   redis:
-    host: 192.168.77.130
+    host: 192.168.1.15
     port: 6379
+    password: tarena
 
 
 #开启feign对sentinel的支持
@@ -45,4 +55,9 @@ management:
       exposure:
         include: '*'
 
-
+##开启debug日志
+logging:
+  level:
+    com.lwhtarena.glmall.seckill: debug
+    org.springframework.cloud.openfeign: deubg
+    org.springframework.cloud.sleuth: deubg

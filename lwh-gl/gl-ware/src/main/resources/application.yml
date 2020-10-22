@@ -15,7 +15,16 @@ spring:
     sentinel:
       transport:
         #配置sentinel dashboard地址
-        dashboard: localhost:8080
+        dashboard: 192.168.1.15:8848
+  ##服务追踪
+  zipkin:
+    base-url: 192.168.1.15:9411
+    discovery-client-enabled: false
+    sender:
+      type: web
+  sleuth:
+    sampler:
+      probability: 1
 
 #开启feign对sentinel的支持
 feign:

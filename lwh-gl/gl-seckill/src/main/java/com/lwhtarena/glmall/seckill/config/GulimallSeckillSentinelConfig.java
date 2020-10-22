@@ -17,6 +17,10 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class GulimallSeckillSentinelConfig {
+
+    /**
+     * 响应式编程
+     * **/
     @Bean
     public BlockExceptionHandler sentinelBlockExceptionHandler() {
         return (request, response, e) -> {

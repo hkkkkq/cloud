@@ -3,7 +3,14 @@ spring:
     sentinel:
       transport:
         #配置sentinel dashboard地址
-        dashboard: localhost:8080
+        dashboard: 192.168.1.15:8858
+      ##定制snetinel fallback响应
+      scg:
+        fallback:
+          content-type: application/json
+          response-status: 429
+
+
 
     gateway:
       routes:

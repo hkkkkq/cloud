@@ -14,8 +14,17 @@ spring:
 
     sentinel:
       transport:
-        dashboard: 192.168.1.15:8080 #配置sentinel dashboard地址
-        
+        dashboard: 192.168.1.15:8858 #配置sentinel dashboard地址
+  ##服务追踪
+  zipkin:
+    base-url: 192.168.1.15:9411
+    discovery-client-enabled: false
+    sender:
+      type: web
+  sleuth:
+    sampler:
+      probability: 1
+
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
   thymeleaf:
@@ -54,7 +63,10 @@ management:
       exposure:
         include: '*'
 
+##开启debug日志
 logging:
   level:
     com.lwhtarena.glmall: debug
+    org.springframework.cloud.openfeign: deubg
+    org.springframework.cloud.sleuth: deubg
 

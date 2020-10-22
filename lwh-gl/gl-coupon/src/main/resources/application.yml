@@ -1,4 +1,8 @@
+server:
+  port: 7000
 spring:
+  application:
+    name: gulimall-coupon
   datasource:
     username: root
     password: root
@@ -8,15 +12,25 @@ spring:
     nacos:
       discovery:
         server-addr: 192.168.1.15:8848
-  application:
-    name: gulimall-coupon
+    sentinel:
+      transport:
+        #配置sentinel dashboard地址
+        dashboard: 192.168.1.15:8858
 
+  ##服务追踪
+  zipkin:
+    base-url: 192.168.1.15:9411
+    discovery-client-enabled: false
+    sender:
+      type: web
+  sleuth:
+    sampler:
+      probability: 1
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
     db-config:
       id-type: auto
-server:
-  port: 7000
+
 

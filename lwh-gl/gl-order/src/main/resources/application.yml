@@ -31,8 +31,24 @@ spring:
     nacos:
       discovery:
         server-addr: 192.168.1.15:8848
+
   application:
     name: gulimall-order
+
+    sentinel:
+      transport:
+        #配置sentinel dashboard地址
+        dashboard: 192.168.1.15:8848
+  ##服务追踪
+  zipkin:
+    base-url: 192.168.1.15:9411
+    discovery-client-enabled: false
+    sender:
+      type: web
+  sleuth:
+    sampler:
+      probability: 1
+
   redis:
     host:
 
